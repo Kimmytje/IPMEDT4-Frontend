@@ -1,13 +1,92 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url(https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&family=Lemon&family=Roboto:wght@300&display=swap);
+
+:root {
+  --background: #1a1a1a;
+  --purple: #392165;
+  --green: #60C689;
+  --pink: #E91E63;
+  --magenta: #9C2780;
+  --white: #ECF0F1;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+* {
+  font-family: "Lemon";
+
+  margin: 0;
+  padding: 0;
+
+  color: var(--white);
+}
+
+html {
+  font-size: 62.5%; /* 1rem = 10px */
+}
+
+body {
+  font-size: 1.8rem;
+
+  padding: 4rem;
+
+  background-color: var(--background);
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+
+  max-width: 60rem;
+  margin: 0 auto;
+  padding: 2rem;
+
+  border-bottom: 1px solid #f2f2f2;
+}
+
+.navbar .links {
+  margin-left: auto;
+}
+
+.navbar li {
+  list-style: none;
+}
+
+.navbar a {
+  margin-left: 1.6rem;
+  padding: .6rem;
+
+  text-decoration: none;
+}
+
+.navbar a:hover {
+  color: #f1356d;
+}
+
+.content {
+  width: 40rem;
+  margin: 4rem auto;
+  padding: 2rem;
+
+  text-align: center;
+}
+
+.button-list > h2 {
+  font-size: 4.2rem;
+
+  margin-bottom: 10rem;
+}
+
+.button {
+  margin: 20px 0;
+  padding: 10px 16px;
+
+  background-color: var(--purple);
+}
+
+.button > a {
+  font-size: 20px;
+
+  margin-bottom: 8px;
+
+  text-decoration: none;
+
+  color: var(--white);
 }
