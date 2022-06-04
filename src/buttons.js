@@ -6,9 +6,11 @@ const ButtonList = (props) => {
         <section className="button-list">
             <h2>{ title }</h2>
             {buttons.map(button => (
-            <section className="button" key={button.id}>
-                <a href={button.link}>{button.title}</a>
-            </section>
+                <a href={button.link}>
+                    <section className="button" key={button.id}>
+                        <p>{button.title}</p>
+                    </section>
+                </a>
             ))}
         </section>
      );

@@ -1,5 +1,3 @@
-@import url(https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&family=Lemon&family=Roboto:wght@300&display=swap);
-
 :root {
   --background: #1a1a1a;
   --purple: #392165;
@@ -9,26 +7,48 @@
   --white: #ECF0F1;
 }
 
-* {
+*,
+*::after,
+*::before {
   font-family: "Lemon";
 
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
 
   color: var(--white);
 }
 
+.material-icons {
+  font-size: 1.8rem !important;
+
+  cursor: default;
+  vertical-align: bottom;
+
+  color: var(--Pink);
+}
+
 html {
   font-size: 62.5%; /* 1rem = 10px */
+
+  box-sizing: inherit;
+
+  scroll-behavior: smooth;
 }
 
 body {
   font-size: 1.8rem;
 
+  overflow: hidden;
+
+  max-width: 100vw;
+  max-height: 100vh;
   padding: 4rem;
 
   background-color: var(--background);
 }
+
+/* Navigation */
 
 .navbar {
   display: flex;
@@ -60,12 +80,18 @@ body {
   color: #f1356d;
 }
 
+/* Home */
+
 .content {
-  width: 40rem;
-  margin: 4rem auto;
-  padding: 2rem;
+  max-width: 80%;
+  margin: auto;
 
   text-align: center;
+}
+
+.button-list {
+  max-width: 40rem;
+  margin: auto;
 }
 
 .button-list > h2 {
@@ -81,7 +107,7 @@ body {
   background-color: var(--purple);
 }
 
-.button > a {
+a {
   font-size: 20px;
 
   margin-bottom: 8px;
@@ -89,4 +115,18 @@ body {
   text-decoration: none;
 
   color: var(--white);
+}
+
+/* Map */
+
+.map {
+  overflow: hidden;
+
+  height: 40vh;
+
+  /* border: 1px solid blue; */
+}
+
+img {
+  height: 100%;
 }

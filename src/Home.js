@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import ButtonList from './buttons';
+import ButtonList from './Buttons';
 
 const Home = () => {
     const [buttons, setButtons] = useState([
