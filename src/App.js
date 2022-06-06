@@ -1,6 +1,6 @@
-import Navbar from './Navbar';
+// import Navbar from './Navbar';
 import Home from './Home';
-import Checkpoint from './Checkpoint';
+import {CheckpointSelect, CheckpointCreate} from './Checkpoint';
 import {Create, CreateWalk, CreateNow} from './Create';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
@@ -31,7 +31,11 @@ function App() {
               </Route>
 
                 <Route exact path="/create/checkpoint">
-                  <Checkpoint/>
+                  <CheckpointSelect/>
+                </Route>
+
+                <Route path="/create/checkpoint/">
+                  <CheckpointCreate/>
                 </Route>
 
             {/* <Route path="/play">

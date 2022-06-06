@@ -6,8 +6,8 @@ const ButtonList = (props) => {
         <section className="button-list">
             <h2>{ title }</h2>
             {buttons.map(button => (
-                <a href={button.link}>
-                    <section className="button" key={button.id}>
+                <a href={button.link}  key={button.id}>
+                    <section className="button">
                         <p>{button.title}</p>
                     </section>
                 </a>
