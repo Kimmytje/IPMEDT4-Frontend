@@ -7,7 +7,7 @@ const CardList = (props) => {
                     <section className="card" key={card.id}>
                         <section className="card-header">
                             <figure className="card-icon">
-                                <img src="" alt="Type of checkpoint" />
+                                <img src={card.imagePath} alt="Type of checkpoint" />
                             </figure>
                         </section>
                         
@@ -17,7 +17,9 @@ const CardList = (props) => {
                                 
 
                                 <ul className="card-examples">
-                                    <li>Test</li>
+                                    {card.examples.map(example => (
+                                        <li>{example}</li>
+                                    ))}
                                 </ul>
                             </section>
                         </a>

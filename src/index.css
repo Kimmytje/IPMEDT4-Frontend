@@ -10,13 +10,9 @@
 *,
 *::after,
 *::before {
-  font-family: "Lemon";
-
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-
-  color: var(--white);
 }
 
 .material-icons {
@@ -25,7 +21,7 @@
   cursor: default;
   vertical-align: bottom;
 
-  color: var(--Pink);
+  color: var(--pink);
 }
 
 html {
@@ -37,6 +33,7 @@ html {
 }
 
 body {
+  font-family: "Lemon";
   font-size: 1.8rem;
 
   overflow: hidden;
@@ -44,12 +41,14 @@ body {
   width: 100vw;
   height: 100vh;
 
+  color: var(--white);
   background-color: var(--background);
 }
 
 .content {
   max-width: 80rem;
   margin: auto;
+  padding: 2rem;
   padding-top: 4rem;
 
   text-align: center;
@@ -134,12 +133,15 @@ img {
 /* Select type of checkpoint */
 
 .cards {
+  font-family: "Open Sans", sans-serif;
+
   display: grid;
   justify-content: center;
 
   margin: auto;
 
-  gap: 2rem;
+  gap: 1.5rem;
+  row-gap: 2.5rem;
   grid-template-columns: 1fr 1fr;
 }
 
@@ -148,6 +150,8 @@ img {
 }
 
 .card {
+  min-width: 15rem;
+  max-width: 30rem;
   padding: 20px;
 
   cursor: pointer;
@@ -156,64 +160,36 @@ img {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12) , 0 1px 2px rgba( 0, 0, 0, 0.24);
 }
 
-.card:hover {
-  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25) , 0 10px 10px rgba( 0, 0, 0, 0.22);
-}
-
-.card:hover .card-header {
-  height: 40px;
-}
-
-.card:hover .card-header .card-icon {
-  transform: translateX(-50%) translateY( -50%) scale( 3);
-}
-
-.card:hover .card-body {
-  height: 170px;
-}
-
-.card:hover .card-body .card-knowledge li {
-  transition-timing-function: cubic-bezier(0, 1.5, 1, 1);
-  transition-duration: 0.5s;
-  transform: translateX(0);
-}
-
-.card:hover .card-body .card-knowledge li:nth-child(1) {
-  transition-delay: 0.25s;
-}
-
-.card:hover .card-body .card-knowledge li:nth-child(2) {
-  transition-delay: 0.5s;
-}
-
-.card:hover .card-body .card-knowledge li:nth-child(3) {
-  transition-delay: 0.75s;
-}
-
-.card:hover .card-body .card-knowledge li:nth-child(4) {
-  transition-delay: 1s;
-}
-
-.card:hover .card-body .card-knowledge li:nth-child(5) {
-  transition-delay: 1.25s;
-}
-
-.card:hover .card-body .card-knowledge li:nth-child(6) {
-  transition-delay: 1.5s;
-}
-
 .card .card-header {
   position: relative;
 
   overflow: hidden;
 
-  height: 170px;
+  height: 10rem;
   margin: -20px -20px 20px -20px;
 
   transition: height 0.5s;
 
-  background-color: #eb6c3f;
+  background-color: #E95A28;
 }
+
+/*
+.card:nth-child(1n) {
+  background-color: var(--purple);
+}
+
+.card:nth-child(2n) {
+  background-color: var(--green);
+}
+
+.card:nth-child(3n) {
+  background-color: var(--pink);
+}
+
+.card:nth-child(4n) {
+  background-color: var(--magenta);
+}
+*/
 
 .card .card-header .card-icon {
   position: absolute;
@@ -222,8 +198,7 @@ img {
 
   display: block;
 
-  width: 128px;
-  height: 128px;
+  height: 100%;
 
   transition: transform 0.5s;
   transform: translateY(-50%) translateX( -50%);
@@ -232,34 +207,84 @@ img {
 .card .card-body {
   overflow: hidden;
 
-  height: 40px;
+  height: 4rem;
 
   transition: height 0.5s;
 }
 
 .card .card-body .card-title {
-  font-size: 1.4em;
+  font-size: 1.3em;
   font-weight: 600;
 
   text-transform: uppercase;
+
+  color: #000;
 }
 
-.card .card-body .card-duration {
-  font-style: italic;
-
-  color: #9E9E9E;
-}
-
-.card .card-body .card-knowledge {
+.card .card-body .card-examples {
   margin-top: 10px;
-
-  color: #424242;
 }
 
-.card .card-body .card-knowledge li {
+.card .card-body .card-examples li {
+  font-size: 1.6rem;
+
   margin-top: 5px;
+
+  list-style: none;
 
   transition-delay: 0.5s;
   transition-duration: 0;
   transform: translateX(-100%);
+  text-align: start;
+
+  color: #424242;
 }
+
+.card:hover {
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25) , 0 10px 10px rgba( 0, 0, 0, 0.22);
+}
+
+.card:hover .card-header {
+  height: 4rem;
+}
+
+.card:hover .card-header .card-icon {
+  transform: translateX(-50%) translateY( -50%) scale( 5);
+}
+
+.card:hover .card-body {
+  height: 10rem;
+}
+
+.card:hover .card-body .card-examples li {
+  transition-timing-function: cubic-bezier(0, 1.5, 1, 1);
+  transition-duration: 0.5s;
+  transform: translateX(0);
+}
+
+.card:hover .card-body .card-examples li:nth-child(1) {
+  transition-delay: 0.25s;
+}
+
+.card:hover .card-body .card-examples li:nth-child(2) {
+  transition-delay: 0.5s;
+}
+
+/*
+If we ever want to make the cards bigger and add more Examples
+.card:hover .card-body .card-examples li:nth-child(3) {
+  transition-delay: 0.75s;
+}
+
+.card:hover .card-body .card-examples li:nth-child(4) {
+  transition-delay: 1s;
+}
+
+.card:hover .card-body .card-examples li:nth-child(5) {
+  transition-delay: 1.25s;
+}
+
+.card:hover .card-body .card-examples li:nth-child(6) {
+  transition-delay: 1.5s;
+}
+*/
