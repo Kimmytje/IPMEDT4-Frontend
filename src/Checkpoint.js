@@ -16,14 +16,42 @@ const CheckpointSelect = () => {
 
 const CheckpointCreate = () => {
     return (  
-        <form action="">
-            <label>
-                What your name
-                <textarea name="name" id="name" cols="30" rows="10"></textarea>
-            </label>
+        <section className='create-checkpoint'>
+            <form >
+                <label>Checkpoint naam:</label>
+                <input
+                    type="text" 
+                    required
+                />
 
-            <input type="submit" value="Submit"/>
-        </form>
+                <label>Vraag:</label>
+                <textarea
+                    required
+                ></textarea>
+
+                <label>Antwoord A:</label>
+                <input
+                    type="text" 
+                    required
+                />
+                <label>Antwoord B:</label>
+                <input
+                    type="text" 
+                    required
+                />
+                <label>Antwoord C:</label>
+                <input
+                    type="text" 
+                />
+                <label>Antwoord D:</label>
+                <input
+                    type="text" 
+                />
+
+                <button>Done</button>
+            </form>
+        </section>
+        
     );
 }
  

@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const ButtonList = (props) => {
     const buttons = props.buttons;
     const title = props.title;
@@ -6,11 +8,11 @@ const ButtonList = (props) => {
         <section className="button-list">
             <h2>{ title }</h2>
             {buttons.map(button => (
-                <a href={button.link}  key={button.id}>
+                <Link to={button.link}  key={button.id}>
                     <section className="button">
                         <p>{button.title}</p>
                     </section>
-                </a>
+                </Link>
             ))}
         </section>
      );

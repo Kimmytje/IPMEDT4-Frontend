@@ -288,3 +288,50 @@ If we ever want to make the cards bigger and add more Examples
   transition-delay: 1.5s;
 }
 */
+
+/* Form */
+
+.create-checkpoint {
+  max-width: 400px;
+  margin: 0 auto;
+
+  text-align: center;
+}
+
+.create-checkpoint label {
+  display: block;
+
+  text-align: left;
+}
+
+.create-checkpoint h2 {
+  font-size: 20px;
+
+  margin-bottom: 30px;
+
+  color: #f1356d;
+}
+
+.create-checkpoint input,
+.create-checkpoint textarea,
+.create-checkpoint select {
+  display: block;
+
+  box-sizing: border-box;
+  width: 100%;
+  margin: 10px 0;
+  padding: 6px 10px;
+
+  border: 1px solid #ddd;
+}
+
+.create-checkpoint button {
+  padding: 8px;
+
+  cursor: pointer;
+
+  color: #fff;
+  border: 0;
+  border-radius: 8px;
+  background: #f1356d;
+}

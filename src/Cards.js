@@ -1,3 +1,6 @@
+import { Link } from "react-router-dom";
+
+
 const CardList = (props) => {
     const cards = props.cards;
 
@@ -11,7 +14,7 @@ const CardList = (props) => {
                             </figure>
                         </section>
                         
-                        <a href={card.link}>
+                        <Link to={card.link}>
                             <section className="card-body">
                                 <h3 className="card-title">{card.title}</h3>
                                 
@@ -22,7 +25,7 @@ const CardList = (props) => {
                                     ))}
                                 </ul>
                             </section>
-                        </a>
+                        </Link>
                     </section>
             ))}
         </section>
