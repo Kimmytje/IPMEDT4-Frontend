@@ -9,7 +9,7 @@ function App() {
   useEffect(() => {
     async function getAllRoutes() {
       try {
-        const routes = await axios.get("http://127.0.0.1:8001/api/routes/")
+        const routes = await axios.get("http://127.0.0.1:8001/api/routes/") 
         
         d = routes.data;
         setRoutes(routes.data)
