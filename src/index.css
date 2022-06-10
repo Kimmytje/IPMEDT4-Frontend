@@ -1,10 +1,31 @@
 :root {
   --background: #1a1a1a;
+
+  /* Purple variations */
+
   --purple: #392165;
+  --purple50: #39216550;
+
+  /* Green variations */
+
   --green: #60C689;
+  --green50: #60C68950;
+
+  /* Pink variations */
+
   --pink: #E91E63;
-  --magenta: #9C2780;
+  --pink50: #E91E6350;
+
+  /* Magenta variations */
+
+  --magenta: #5B2165;
+  --magenta50: #5B216550;
+  --magenta70: #5B216570;
+
+  /* White variations */
+
   --white: #ECF0F1;
+  --white10: #ECF0F110;
 }
 
 *,
@@ -21,7 +42,7 @@
   cursor: default;
   vertical-align: bottom;
 
-  color: var(--pink);
+  color: var(--white);
 }
 
 html {
@@ -46,12 +67,53 @@ body {
 }
 
 .content {
+  position: relative;
+
   max-width: 80rem;
   margin: auto;
   padding: 2rem;
   padding-top: 4rem;
 
   text-align: center;
+}
+
+/* Buttons */
+
+button /* Remove button style */ {
+  font: inherit;
+
+  padding: 0;
+
+  cursor: pointer;
+
+  color: inherit;
+  border: none;
+  outline: inherit;
+  background: none;
+}
+
+.btn-primary {
+  margin: 20px 0;
+  padding: 10px 16px;
+
+  border-radius: 1rem;
+  background-color: var(--magenta70);
+}
+
+.btn-secondary {
+  margin: 20px 0;
+  padding: 10px 16px;
+
+  color: rgba(26, 26, 26, .5);
+  color: var(--white);
+  border: .1rem solid var(--magenta);
+  border-radius: 1rem;
+  background-color: var(--white10);
+}
+
+.btn-back {
+  position: absolute;
+  left: 2rem;
 }
 
 /* Navigation */
@@ -99,13 +161,6 @@ body {
   margin-bottom: 10rem;
 }
 
-.button {
-  margin: 20px 0;
-  padding: 10px 16px;
-
-  background-color: var(--purple);
-}
-
 a {
   font-size: 20px;
 
@@ -139,6 +194,7 @@ img {
   justify-content: center;
 
   margin: auto;
+  padding-top: 6rem;
 
   gap: 1.5rem;
   row-gap: 2.5rem;
@@ -305,11 +361,7 @@ If we ever want to make the cards bigger and add more Examples
 }
 
 .create-checkpoint h2 {
-  font-size: 20px;
-
   margin-bottom: 30px;
-
-  color: #f1356d;
 }
 
 .create-checkpoint input,
@@ -322,16 +374,23 @@ If we ever want to make the cards bigger and add more Examples
   margin: 10px 0;
   padding: 6px 10px;
 
-  border: 1px solid #ddd;
+  border: .1rem solid var(--magenta);
+  border-radius: 1rem;
 }
 
 .create-checkpoint button {
-  padding: 8px;
+  padding: 1rem;
 
   cursor: pointer;
 
-  color: #fff;
+  color: var(--white);
   border: 0;
-  border-radius: 8px;
-  background: #f1356d;
+  border-radius: 1rem;
+  background: #392165;
+}
+
+@media(max-width: 450px) {
+  .map {
+    padding-top: 6rem;
+  }
 }
