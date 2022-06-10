@@ -4,8 +4,11 @@ import axios from "axios";
 import Home from './Home';
 import Back from './Back';
 
-import {CheckpointSelect, CheckpointCreate} from './Checkpoint';
 import {Create, CreateWalk, CreateNow} from './Create';
+import {CheckpointSelect, CheckpointCreate} from './Checkpoint';
+
+import Play from './Play';
+
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 let d;
@@ -80,11 +83,11 @@ function App() {
                     <CheckpointCreate />
                   </Route>
 
-              {/* <Route path="/play">
+              /* <Route path="/play">
                 <Back/>
       
                 <Play/>
-              </Route> */}
+              </Route>
 
             </Switch>
           </section>
