@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+
 import Home from './Home';
+import Back from './Back';
+
 import {CheckpointSelect, CheckpointCreate} from './Checkpoint';
 import {Create, CreateWalk, CreateNow} from './Create';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
@@ -48,26 +51,38 @@ function App() {
               </Route>
 
               <Route exact path="/create">
+                <Back/>
+
                 <Create />
               </Route>
 
                 <Route exact path="/create/now">
+                  <Back/>
+
                   <CreateNow />
                 </Route>
 
                 <Route exact path="/create/walk">
+                  <Back/>
+
                   <CreateWalk />
                 </Route>
 
                   <Route exact path="/create/checkpoint">
+                    <Back/>
+  
                     <CheckpointSelect />
                   </Route>
 
                   <Route path="/create/checkpoint/">
+                    <Back/>
+    
                     <CheckpointCreate />
                   </Route>
 
               {/* <Route path="/play">
+                <Back/>
+      
                 <Play/>
               </Route> */}
 
