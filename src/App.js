@@ -26,6 +26,7 @@ function App() {
   console.log(d);
   return (
     <>
+      {/* Add from database
       <section className="App">
         <h1>Connect React JS with Laravel</h1>
         {routes.map((routes, i) => {
@@ -33,7 +34,8 @@ function App() {
             <h2 key={i}>{routes.stad}</h2>
           );
         })}
-      </section>
+      </section> 
+      */}
     
       <Router>
         <section className="App">
