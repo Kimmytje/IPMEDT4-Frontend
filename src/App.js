@@ -25,14 +25,17 @@ function App() {
   }, [])
   console.log(d);
   return (
-    <><div className="App">
-      <h1>Connect React JS with Laravel</h1>
-      {routes.map((routes, i) => {
-        return (
-          <h2 key={i}>{routes.stad}</h2>
-        );
-      })}
-    </div><Router>
+    <>
+      <section className="App">
+        <h1>Connect React JS with Laravel</h1>
+        {routes.map((routes, i) => {
+          return (
+            <h2 key={i}>{routes.stad}</h2>
+          );
+        })}
+      </section>
+    
+      <Router>
         <section className="App">
           {/* <Navbar/> */}
           <section className="content">
@@ -46,30 +49,32 @@ function App() {
                 <Create />
               </Route>
 
-              <Route exact path="/create/now">
-                <CreateNow />
-              </Route>
+                <Route exact path="/create/now">
+                  <CreateNow />
+                </Route>
 
-              <Route exact path="/create/walk">
-                <CreateWalk />
-              </Route>
+                <Route exact path="/create/walk">
+                  <CreateWalk />
+                </Route>
 
-              <Route exact path="/create/checkpoint">
-                <CheckpointSelect />
-              </Route>
+                  <Route exact path="/create/checkpoint">
+                    <CheckpointSelect />
+                  </Route>
 
-              <Route path="/create/checkpoint/">
-                <CheckpointCreate />
-              </Route>
+                  <Route path="/create/checkpoint/">
+                    <CheckpointCreate />
+                  </Route>
 
               {/* <Route path="/play">
-      <Play/>
-    </Route> */}
+                <Play/>
+              </Route> */}
 
             </Switch>
           </section>
         </section>
-      </Router></>
+      </Router>
+      
+    </>
   );
 }
 
