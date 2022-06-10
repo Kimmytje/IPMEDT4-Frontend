@@ -32,19 +32,19 @@ function App() {
   console.log(d);
   return (
     <>
-      {/* Add from database
-      <section className="App">
+      {/* Add from database */}
+      {/* <section className="App">
         <h1>Connect React JS with Laravel</h1>
         {routes.map((routes, i) => {
           return (
             <h2 key={i}>{routes.stad}</h2>
           );
         })}
-      </section> 
-      */}
+      </section>  */}
+     
     
       <Router>
-        <section className="App">
+        <article className="App">
           {/* <Navbar/> */}
           <section className="content">
             <Switch>
@@ -83,7 +83,7 @@ function App() {
                     <CheckpointCreate />
                   </Route>
 
-              /* <Route path="/play">
+              <Route path="/play">
                 <Back/>
       
                 <Play/>
@@ -91,7 +91,7 @@ function App() {
 
             </Switch>
           </section>
-        </section>
+        </article>
       </Router>
       
     </>

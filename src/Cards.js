@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 
-const CardList = (props) => {
+const ActivityCardList = (props) => {
     const cards = props.cards;
 
     return (
@@ -31,5 +31,18 @@ const CardList = (props) => {
         </section>
      );
 }
+
+const GameCardList = () => {
+    return ( 
+        <section className="cards">
+
+        </section>
+     );
+}
  
-export default CardList;
+export default GameCardList;
+ 
+export {
+    ActivityCardList,
+    GameCardList
+};
