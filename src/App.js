@@ -15,7 +15,7 @@ function App() {
   useEffect(() => {
     async function getAllRoutes() {
       try {
-        const routes = await axios.get("http://127.0.0.1:8001/api/routes/") //de route van je localhost 
+        const routes = await axios.get("http://127.0.0.1:8000/api/routes/") //de route van je localhost 
         
         d = routes.data;
         setRoutes(routes.data)
