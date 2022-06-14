@@ -5,9 +5,8 @@ import './StartMapLoc.css';
 const StartMapLoc = () =>
 {
   return (
-    <MapContainer center={[51.505, -0.09]} zoom={4} scrollWheelZoom={true}>
+    <MapContainer center={[51.505, -0.09]} zoom={4} scrollWheelZoom={true} dragging={false}>
       <TileLayer
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
       <LocateLocation />
@@ -23,7 +22,7 @@ const LocateLocation = () =>
   map = useMapEvents({
     locationfound: (location) => {
       setPosition(location.latlng)
-      map.flyTo(location.latlng, 14)
+      map.flyTo(location.latlng, 18)
       console.log(location.latlng)
     },
   })

@@ -15,6 +15,13 @@ const CheckpointSelect = () => {
 }
 
 const CheckpointCreate = () => {
+    let path = window.location.pathname
+    if(path.includes("action")) return CreateMultipleChoiceForm();
+    else if (path.includes("comment")) return CreateCommentForm();
+}
+
+const CreateMultipleChoiceForm = () =>
+{
     return (  
         <section className='create-checkpoint'>
             <form >
@@ -45,7 +52,24 @@ const CheckpointCreate = () => {
                 <button>Done</button>
             </form>
         </section>
-        
+    );
+}
+
+const CreateCommentForm = () =>
+{
+    return (  
+        <section className='create-checkpoint'>
+            <form >
+                <label>Comment:</label>
+                <textarea
+                    required
+                    rows={4}
+                    cols={50}
+                ></textarea>
+
+                <button>Done</button>
+            </form>
+        </section>
     );
 }
  
