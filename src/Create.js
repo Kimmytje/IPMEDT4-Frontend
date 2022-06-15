@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import ButtonList from './Buttons';
-import Map from './Map';
+import StartMapClick from './map_components/start_maps/StartMapClick';
+import StartMapLoc from './map_components/start_maps/StartMapLoc';
 
 // Choose to walk or make route from home
 const Create = () => {
@@ -25,12 +26,10 @@ const CreateWalk = () => {
     ]);
 
     return ( 
-        <>
-            <article className="createWalk">
-                <Map />
-                <ButtonList buttons={buttons} />
-            </article>
-        </>
+        <section className="createWalk">
+            <StartMapLoc/>
+            <ButtonList buttons={buttons}/>
+        </section>
      );
 }
 
@@ -41,13 +40,10 @@ const CreateNow = () => {
     ]);
 
     return ( 
-        <>
-            <article className="createnNow">
-                <Map/>
-                <ButtonList buttons={buttons}/>
-            </article>
-        </>
-            
+        <section className="createnNow">
+            <StartMapClick/>
+            <ButtonList buttons={buttons}/>
+        </section>
      );
 }
  
