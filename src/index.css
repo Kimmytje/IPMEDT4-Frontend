@@ -169,16 +169,6 @@ a {
   color: var(--white);
 }
 
-/* Map */
-
-.map {
-  overflow: hidden;
-
-  height: 40vh;
-
-  /* border: 1px solid blue; */
-}
-
 img {
   height: 100%;
 }
@@ -626,12 +616,6 @@ to {
   border: 0;
   border-radius: 1rem;
   background: #392165;
-}
-
-@media(max-width: 450px) {
-  .map {
-    padding-top: 6rem;
-  }
 }
 
 @media(max-width: 550px) {

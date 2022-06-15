@@ -1,5 +1,14 @@
-.leaflet-container
-{
-  width: 40vw;
-  height: 50vh;
+.leaflet-container {
+  overflow: hidden;
+
+  height: 40vh;
+  margin-top: 4rem;
+
+  /* border: 1px solid blue; */
+}
+
+@media(max-width: 450px) {
+  .leaflet-container {
+    margin-top: 6rem;
+  }
 }
