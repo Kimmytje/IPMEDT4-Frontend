@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import ActivityCardList from './Cards';
+import {ActivityCardList} from './Cards';
 
 
 const CheckpointSelect = () => {

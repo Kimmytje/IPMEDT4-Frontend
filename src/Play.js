@@ -1,33 +1,37 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 
-import GameCardList from './Cards';
+import {GameCardList} from './Cards';
+
+import axios from "axios";
+let d;
+
 
 
 const Play = () => {
     const [routes, setRoutes] = useState([])
-
-    const [cards, setCards] = useState([
-        {id: 1, title: 'Sightseeing', location: "Haarlem", description: 'Een route om de mooiste plekjes in Haarlem te zien', dificulty: 1},
-        {id: 4, title: 'Sightseeing', location: "Groningen", description: 'Een route om de mooiste plekjes in Groningen te zien', dificulty: 2},
-        {id: 2, title: 'Sightseeing', location: "Roermond", description: 'Een route om de mooiste plekjes in Roermond te zien', dificulty: 1},
-        {id: 6, title: 'Sightseeing', location: "Leeuwarden", description: 'Een route om de mooiste plekjes in Leeuwarden te zien', dificulty: 2},
-        {id: 3, title: 'Sightseeing', location: "Breda", description: 'Een route om de mooiste plekjes in Breda te zien', dificulty: 1},
-    ]);
+    useEffect(() => {
+        async function getAllRoutes() {
+          try {
+            const routes = await axios.get("http://127.0.0.1:8000/api/routes") //de route van je localhost 
+            
+            d = routes.data;
+            setRoutes(routes.data)
+    
+          } catch (error) {
+            console.log(error)
+          }
+        }
+        getAllRoutes()
+      }, [])
+      console.log(d);
+      
 
     return (  
-        <>
-            <section className="App">
-                {routes.map((routes, i) => {
-                return (
-                    <h2 key={i}>{routes.stad}</h2>
-                );
-                })}
-            </section> 
-     
+        <>     
             <article className="play">
                 <section className="gamecards-container">
-                    <GameCardList cards={cards}/>
+                    <GameCardList cards={routes}/>
                 </section>
 
                 <Link to="/create">
