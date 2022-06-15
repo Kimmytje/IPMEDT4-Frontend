@@ -11,9 +11,9 @@ const Create = () => {
 
     return ( 
         <>
-            <section className="create">
+            <article className="create">
                 <ButtonList buttons={buttons} title="Maak een route" />
-            </section>
+            </article>
         </>
      );
 }
@@ -26,10 +26,10 @@ const CreateWalk = () => {
 
     return ( 
         <>
-            <section className="createWalk">
+            <article className="createWalk">
                 <Map />
                 <ButtonList buttons={buttons} />
-            </section>
+            </article>
         </>
      );
 }
@@ -42,10 +42,10 @@ const CreateNow = () => {
 
     return ( 
         <>
-            <section className="createnNow">
+            <article className="createnNow">
                 <Map/>
                 <ButtonList buttons={buttons}/>
-            </section>
+            </article>
         </>
             
      );

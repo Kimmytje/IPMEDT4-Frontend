@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import CardList from './Cards';
+import {ActivityCardList} from './Cards';
 
 
 const CheckpointSelect = () => {
@@ -12,7 +12,7 @@ const CheckpointSelect = () => {
 
     return (  
         <>
-            <CardList cards={cards}/>
+            <ActivityCardList cards={cards}/>
         </>
         
     );
@@ -21,7 +21,7 @@ const CheckpointSelect = () => {
 const CheckpointCreate = () => {
     return ( 
         <>
-            <section className='create-checkpoint'>
+            <article className='create-checkpoint'>
                 <h2>Create checkpoint</h2>
                 <form >
                     <label>Vraag:</label>
@@ -50,7 +50,7 @@ const CheckpointCreate = () => {
 
                     <button>Done</button>
                 </form>
-            </section>
+            </article>
         </>
     );
 }

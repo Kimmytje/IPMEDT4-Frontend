@@ -4,8 +4,11 @@ import axios from "axios";
 import Home from './Home';
 import Back from './Back';
 
-import {CheckpointSelect, CheckpointCreate} from './Checkpoint';
 import {Create, CreateWalk, CreateNow} from './Create';
+import {CheckpointSelect, CheckpointCreate} from './Checkpoint';
+
+import Play from './Play';
+
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 let d;
@@ -15,7 +18,7 @@ function App() {
   useEffect(() => {
     async function getAllRoutes() {
       try {
-        const routes = await axios.get("http://127.0.0.1:8000/api/routes/") //de route van je localhost 
+        const routes = await axios.get("http://127.0.0.1:8000/api/") //de route van je localhost 
         
         d = routes.data;
         setRoutes(routes.data)
@@ -29,19 +32,19 @@ function App() {
   console.log(d);
   return (
     <>
-      {/* Add from database
-      <section className="App">
+      {/* Add from database */}
+      {/* <section className="App">
         <h1>Connect React JS with Laravel</h1>
         {routes.map((routes, i) => {
           return (
             <h2 key={i}>{routes.stad}</h2>
           );
         })}
-      </section> 
-      */}
+      </section>  */}
+     
     
       <Router>
-        <section className="App">
+        <article className="App">
           {/* <Navbar/> */}
           <section className="content">
             <Switch>
@@ -80,15 +83,15 @@ function App() {
                     <CheckpointCreate />
                   </Route>
 
-              {/* <Route path="/play">
+              <Route path="/play">
                 <Back/>
       
                 <Play/>
-              </Route> */}
+              </Route>
 
             </Switch>
           </section>
-        </section>
+        </article>
       </Router>
       
     </>

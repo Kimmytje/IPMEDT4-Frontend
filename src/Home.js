@@ -8,9 +8,9 @@ const Home = () => {
     ]);
 
     return ( 
-        <section className="home">
+        <article className="home">
             <ButtonList buttons={buttons} title="Welcome"/>
-        </section>
+        </article>
      );
 }
  
