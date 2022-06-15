@@ -1,14 +1,27 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {ActivityCardList} from './Cards';
 
+import axios from 'axios';
+
+let d;
 
 const CheckpointSelect = () => {
-    const [cards, setCards] = useState([
-        // {title: 'Puzzel', examples: ['Een raadsel', 'Multiplechoise'], imagePath: '/Images/Puzzel.png', link: '/create/checkpoint/puzzel'},
-        {title: 'Comment', examples: ['Opmerking', 'Verhaal'], imagePath: '/Images/Comment.png', link: '/create/checkpoint/comment'},
-        // {title: 'Picture', examples: ['Foto met beschrijving', 'Zoek locatie'], imagePath: '/Images/Picture.png', link: '/create/checkpoint/picture'},
-        {title: 'Action', examples: ['Wacht * seconden', 'Doe * jumpingjacks'], imagePath: '/Images/Action.png', link: '/create/checkpoint/action'},
-    ]);
+    const [cards, setCards] = useState([]);
+    useEffect(() => {
+        async function getAllCards() {
+          try {
+            const cards = await axios.get("http://127.0.0.1:8000/api/sa") //de route van je localhost 
+            
+            d = cards.data;
+            setCards(cards.data)
+    
+          } catch (error) {
+            console.log(error)
+          }
+        }
+        getAllCards()
+      }, [])
+      console.log(d);
 
     return (  
         <>
@@ -16,12 +29,6 @@ const CheckpointSelect = () => {
         </>
         
     );
-}
-
-const CheckpointCreate = () => {
-    let path = window.location.pathname
-    if(path.includes("action")) return CreateMultipleChoiceForm();
-    else if (path.includes("comment")) return CreateCommentForm();
 }
 
 const CreateMultipleChoiceForm = () =>
@@ -76,8 +83,68 @@ const CreateCommentForm = () =>
         </section>
     );
 }
+
+const CreateActionForm = () =>
+{
+    return (  
+        <section className='create-checkpoint'>
+            <form >
+                <label>Opdracht:</label>
+                <textarea
+                    required
+                    rows={4}
+                    cols={50}
+                ></textarea>
+
+                <button>Done</button>
+            </form>
+        </section>
+    );
+}
+
+const CreatePuzzelForm = () =>
+{
+    return (  
+        <section className='create-checkpoint'>
+            <form >
+                <label>Raadsel:</label>
+                <textarea
+                    required
+                    rows={4}
+                    cols={50}
+                ></textarea>
+
+                <label>Antwoord:</label>
+                <textarea
+                    required
+                    rows={4}
+                    cols={50}
+                ></textarea>
+
+                <button>Done</button>
+            </form>
+        </section>
+    );
+}
+
+const CreateFotoForm = () =>
+{
+    return (  
+        <section className='create-checkpoint'>
+            <form >
+                <label>Foto:</label>
+
+                <button>Done</button>
+            </form>
+        </section>
+    );
+}
  
 export {
     CheckpointSelect,
-    CheckpointCreate,
+    CreateCommentForm,
+    CreateActionForm,
+    CreatePuzzelForm,
+    CreateFotoForm,
+    CreateMultipleChoiceForm,
 }

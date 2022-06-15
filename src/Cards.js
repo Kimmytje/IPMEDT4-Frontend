@@ -7,22 +7,20 @@ const ActivityCardList = (props) => {
     return (
         <section className="activityCards">
             {cards.map(activityCard => (
-                    <section className="activityCard" key={activityCard.id}>
+                    <section className="activityCard" key={activityCard.naam}>
                         <section className="activityCard-header">
                             <figure className="activityCard-icon">
-                                <img src={activityCard.imagePath} alt="Type of checkpoint" />
+                                <img src={`/Images/` + activityCard.naam + `.png`} alt="Type of checkpoint" />
                             </figure>
                         </section>
                         
-                        <Link to={activityCard.link}>
+                        <Link to={"/create/checkpoint/" + activityCard.naam}>
                             <section className="activityCard-body">
-                                <h3 className="activityCard-title">{activityCard.title}</h3>
+                                <h3 className="activityCard-title">{activityCard.naam}</h3>
                                 
 
                                 <ul className="activityCard-examples">
-                                    {activityCard.examples.map(example => (
-                                        <li>{example}</li>
-                                    ))}
+                                    <li>{activityCard.beschrijving}</li>
                                 </ul>
                             </section>
                         </Link>

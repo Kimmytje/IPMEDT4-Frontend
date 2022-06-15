@@ -5,7 +5,7 @@ import Home from './Home';
 import Back from './Back';
 
 import {Create, CreateWalk, CreateNow} from './Create';
-import {CheckpointSelect, CheckpointCreate} from './Checkpoint';
+import {CheckpointSelect, CreateCommentForm, CreatePuzzelForm, CreateActionForm, CreateFotoForm} from './Checkpoint';
 
 import Play from './Play';
 
@@ -31,18 +31,7 @@ function App() {
   }, [])
   console.log(d);
   return (
-    <>
-      {/* Add from database */}
-      {/* <section className="App">
-        <h1>Connect React JS with Laravel</h1>
-        {routes.map((routes, i) => {
-          return (
-            <h2 key={i}>{routes.stad}</h2>
-          );
-        })}
-      </section>  */}
-     
-    
+    <>   
       <Router>
         <article className="App">
           {/* <Navbar/> */}
@@ -77,11 +66,29 @@ function App() {
                     <CheckpointSelect />
                   </Route>
 
-                  <Route path="/create/checkpoint/">
-                    <Back/>
-    
-                    <CheckpointCreate />
-                  </Route>
+                    <Route path="/create/checkpoint/opdracht">
+                      <Back/>
+      
+                      <CreateActionForm />
+                    </Route>
+
+                    <Route path="/create/checkpoint/commentaar">
+                      <Back/>
+      
+                      <CreateCommentForm />
+                    </Route>
+
+                    <Route path="/create/checkpoint/foto">
+                      <Back/>
+      
+                      <CreateFotoForm />
+                    </Route>
+
+                    <Route path="/create/checkpoint/puzzel">
+                      <Back/>
+      
+                      <CreatePuzzelForm />
+                    </Route>
 
               <Route path="/play">
                 <Back/>
