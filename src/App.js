@@ -5,6 +5,8 @@ import Home from './Home';
 import Back from './Back';
 
 import {Create, CreateWalk, CreateNow} from './Create';
+import LngLatAdder from './LinksHandler';
+import CreateRouteName from './RouteName';
 import {CheckpointSelect, CreateCommentForm, CreatePuzzelForm, CreateActionForm, CreateFotoForm} from './Checkpoint';
 
 import Play from './Play';
@@ -42,53 +44,63 @@ function App() {
                 <Home />
               </Route>
 
-              <Route exact path="/create">
+              <Route exact path="/name">
                 <Back/>
 
-                <Create />
+                <CreateRouteName />
               </Route>
 
-                <Route exact path="/create/now">
+              <Route path="/create/checkpoint/opdracht/">
+                <Back/>
+
+                <CreateActionForm />
+              </Route>
+
+              <Route path="/create/checkpoint/commentaar/">
+                <Back/>
+
+                <CreateCommentForm />
+              </Route>
+
+              <Route path="/create/checkpoint/foto/">
+                <Back/>
+
+                <CreateFotoForm />
+              </Route>
+
+              <Route path="/create/checkpoint/puzzel/">
+                <Back/>
+
+                <CreatePuzzelForm />
+              </Route>
+
+              <Route path="/create/checkpoint/select/">
+                <Back/>
+  
+                <CheckpointSelect />
+              </Route>
+
+                <Route path="/create/now/">
                   <Back/>
 
                   <CreateNow />
                 </Route>
 
-                <Route exact path="/create/walk">
+                <Route path="/create/walk/">
                   <Back/>
 
                   <CreateWalk />
                 </Route>
 
-                  <Route exact path="/create/checkpoint">
-                    <Back/>
-  
-                    <CheckpointSelect />
-                  </Route>
+                <Route path="/create/">
+                  <Back/>
 
-                    <Route path="/create/checkpoint/opdracht">
-                      <Back/>
-      
-                      <CreateActionForm />
-                    </Route>
+                  <Create />
+                </Route>
 
-                    <Route path="/create/checkpoint/commentaar">
-                      <Back/>
-      
-                      <CreateCommentForm />
-                    </Route>
-
-                    <Route path="/create/checkpoint/foto">
-                      <Back/>
-      
-                      <CreateFotoForm />
-                    </Route>
-
-                    <Route path="/create/checkpoint/puzzel">
-                      <Back/>
-      
-                      <CreatePuzzelForm />
-                    </Route>
+                <Route exact path="/linkhandler">
+                  <LngLatAdder />
+                </Route>
 
               <Route path="/play">
                 <Back/>

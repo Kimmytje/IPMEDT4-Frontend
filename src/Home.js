@@ -3,7 +3,7 @@ import ButtonList from './Buttons';
 
 const Home = () => {
     const [buttons, setButtons] = useState([
-        {title: 'Maak route', link: '/create'},
+        {title: 'Maak route', link: '/name'},
         {title: 'Speel spel', link: '/play'}
     ]);
 

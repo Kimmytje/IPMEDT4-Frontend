@@ -1,8 +1,23 @@
 import { Link } from "react-router-dom";
-
+let pathData = "";
 
 const ActivityCardList = (props) => {
     const cards = props.cards;
+
+    if (!window.isScriptLoaded) {
+        const path = window.location.pathname
+        const pathArray = path.split("/")
+        console.warn(pathArray)
+        for(let i = 0; i<pathArray.length; i++)
+        {
+            if(i>3)
+            {
+                pathData+= `${pathArray[i]}/`
+                console.warn(pathData)
+            }
+        }
+        window.isScriptLoaded = true;
+    }
 
     return (
         <section className="activityCards">
@@ -14,7 +29,7 @@ const ActivityCardList = (props) => {
                             </figure>
                         </section>
                         
-                        <Link to={"/create/checkpoint/" + activityCard.naam}>
+                        <Link to={`/create/checkpoint/${activityCard.naam}/${pathData}`}>
                             <section className="activityCard-body">
                                 <h3 className="activityCard-title">{activityCard.naam}</h3>
                                 
