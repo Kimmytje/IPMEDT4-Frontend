@@ -14,7 +14,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 let d;
 
 function App() {
-  const [routes, setRoutes] = useState([])
+  /*const [routes, setRoutes] = useState([])
   useEffect(() => {
     async function getAllRoutes() {
       try {
@@ -29,7 +29,7 @@ function App() {
     }
     getAllRoutes()
   }, [])
-  console.log(d);
+  console.log(d);*/
   return (
     <>
       {/* Add from database */}

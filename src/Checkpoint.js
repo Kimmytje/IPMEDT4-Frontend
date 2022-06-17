@@ -1,5 +1,52 @@
-import { useState } from 'react';
+import axios from 'axios';
+import { Component, useState } from 'react';
 import {ActivityCardList} from './Cards';
+
+class Checkpoint extends Component {
+
+    state = {
+        comment: ''
+    }
+
+    handleInput = (e) => {
+        this.setState({
+            [e.target.comment]: e.target.value
+        });
+    }
+
+    saveComment = async (e) => {
+        e.preventDefault();
+
+        const res = await axios.post('http://127.0.0.1:8001/api/add-comment', this.state);
+        if(res.data.status === 200)
+        {
+            console.log(res.data.message);
+            this.setState({
+                comment: ''
+            });
+        }
+    }
+
+    render() {
+        return(
+        <section className='create-checkpoint'>
+            <form onSubmit={this.saveComment} method="post">
+                <label>Comment:</label>
+                <textarea
+                    required
+                    name='comment'
+                    onChange={this.handleInput}
+                    rows={4}
+                    cols={50}
+                ></textarea>
+
+                <button>Done</button>
+            </form>
+        </section>)
+        
+    }
+
+}
 
 
 const CheckpointSelect = () => {
@@ -62,18 +109,7 @@ const CreateMultipleChoiceForm = () =>
 const CreateCommentForm = () =>
 {
     return (  
-        <section className='create-checkpoint'>
-            <form >
-                <label>Comment:</label>
-                <textarea
-                    required
-                    rows={4}
-                    cols={50}
-                ></textarea>
-
-                <button>Done</button>
-            </form>
-        </section>
+        <Checkpoint />
     );
 }
  
@@ -81,3 +117,5 @@ export {
     CheckpointSelect,
     CheckpointCreate,
 }
+
+export default Checkpoint;
