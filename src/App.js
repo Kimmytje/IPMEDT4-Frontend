@@ -5,7 +5,7 @@ import Home from './Home';
 import Back from './Back';
 
 import {Create, CreateWalk, CreateNow} from './Create';
-import LngLatAdder from './LinksHandler';
+import {LngLatAdder, LngLatGetter} from './LinksHandler';
 import CreateRouteName from './RouteName';
 import {CheckpointSelect, CreateCommentForm, CreatePuzzelForm, CreateActionForm, CreateFotoForm} from './Checkpoint';
 
@@ -100,6 +100,10 @@ function App() {
 
                 <Route exact path="/linkhandler">
                   <LngLatAdder />
+                </Route>
+
+                <Route exact path="/linkhandler/onlocation">
+                  <LngLatGetter />
                 </Route>
 
               <Route path="/play">

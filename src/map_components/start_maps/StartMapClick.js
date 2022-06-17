@@ -2,8 +2,8 @@ import { MapContainer, TileLayer, Marker, useMapEvents, useMap } from 'react-lea
 import React, { useState } from "react";
 import './StartMapClick.css';
 let breakPoint = 0;
-let locLat;
-let locLng;
+let curLat;
+let curLng;
 
 const StartMapClick = () =>
 {
@@ -42,8 +42,8 @@ const ClickMarker = () =>
   const map = useMapEvents({
     click: (ev) => {
       origin = map.mouseEventToLatLng(ev.originalEvent)
-      locLat = origin.lat;
-      locLng = origin.lng;
+      curLat = origin.lat;
+      curLng = origin.lng;
       setPosition(map.mouseEventToLatLng(ev.originalEvent));
     }
   })
@@ -56,5 +56,5 @@ export default StartMapClick;
 
 export {
   StartMapClick,
-  locLat, locLng
+  curLat, curLng
 }

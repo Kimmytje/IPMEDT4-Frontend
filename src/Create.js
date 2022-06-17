@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import ButtonList from './Buttons';
-import { StartMapClick, locLat, locLng } from './map_components/start_maps/StartMapClick';
+import { StartMapClick } from './map_components/start_maps/StartMapClick';
 import StartMapLoc from './map_components/start_maps/StartMapLoc';
 
 let nameOfRoute;
@@ -28,7 +28,8 @@ const Create = () => {
 // Page for making routes while walking
 const CreateWalk = () => {
     const [buttons, setButtons] = useState([
-        {title: 'Plaats checkpoint', link: '/create/checkpoint/select'},
+        {title: 'Plaats checkpoint', link: '/linkhandler/onlocation'},
+        {title: 'Route afronden', link: "/"},
     ]);
 
     return ( 
@@ -42,7 +43,8 @@ const CreateWalk = () => {
 // Page for making routes from home
 const CreateNow = () => {
     const [buttons, setButtons] = useState([
-        {title: 'Plaats checkpoint', link: `/linkhandler`},
+        {title: 'Plaats checkpoint', link: '/linkhandler'},
+        {title: 'Route afronden', link: "/"},
     ]);
 
     return ( 

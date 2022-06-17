@@ -4,7 +4,8 @@ let pathData = "";
 const ActivityCardList = (props) => {
     const cards = props.cards;
 
-    if (!window.isScriptLoaded) {
+    if (!window.isScriptLoaded) 
+    {
         const path = window.location.pathname
         const pathArray = path.split("/")
         console.warn(pathArray)
