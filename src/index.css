@@ -597,6 +597,7 @@ to {
 .create-checkpoint input,
 .create-checkpoint textarea,
 .create-checkpoint select {
+  display: block;
 
   box-sizing: border-box;
   width: 100%;
@@ -624,7 +625,7 @@ to {
   }
 }
 
-.invis
+.invis 
 {
-  display: none;
+  display: none !important;
 }
