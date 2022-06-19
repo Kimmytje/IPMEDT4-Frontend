@@ -8,7 +8,7 @@ const CreateRouteName = () =>
     const ButtonHandler = () =>
     {
         inputValue = document.getElementById("nameInput").value;
-        window.location.href = `/create/${inputValue}`
+        window.location.href = `/create/${inputValue}/0`
     }
     return (  
         <section className='create-checkpoint'>

@@ -596,7 +596,6 @@ to {
 .create-checkpoint input,
 .create-checkpoint textarea,
 .create-checkpoint select {
-  display: block;
 
   box-sizing: border-box;
   width: 100%;
@@ -622,4 +621,9 @@ to {
   .routeCards {
     grid-template-columns: repeat(2, 1fr);
   }
+}
+
+.invis
+{
+  display: none;
 }

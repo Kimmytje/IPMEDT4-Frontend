@@ -68,37 +68,49 @@ const CreateMultipleChoiceForm = () =>
 
 const CreateCommentForm = () =>
 {
-    
+    let dataFromPath = DataHandler()
     return (  
         <section className='create-checkpoint'>
-            <label>Comment:</label>
-            <textarea
-                required
-                rows={4}
-                cols={50}
-                id="commentInput"
-            ></textarea>
-
-            <button onClick={() => DataHandler("commentInput")}>Done</button>
+            <form action="http://127.0.0.1:8000/api/create_checkpoint" method="POST" name="comment_form">
+                <input className='invis' type="text" name="routename" value={dataFromPath[1]}/>
+                <input className='invis' type="text" name="pointnumber" value={dataFromPath[2]}/>
+                <input className='invis' type="text" name="latitude" value={dataFromPath[3]}/>
+                <input className='invis' type="text" name="longitude" value={dataFromPath[4]}/>
+                <input className='invis' type="text" name="activity_title" value={dataFromPath[0]}/>
+                <label>Comment:</label>
+                <textarea 
+                    type="text" 
+                    name="activity_header"
+                    cols={50}
+                    rows={4}
+                ></textarea>
+                <button type = 'submit'>Done</button>
+            </form>
         </section>
     );
 }
 
 const CreateActionForm = () =>
 {
-    return (  
-        <section className='create-checkpoint'>
-            <form >
-                <label>Opdracht:</label>
-                <textarea
-                    required
-                    rows={4}
+    let dataFromPath = DataHandler()
+    return (
+            <section className='create-checkpoint'>
+            <form action="http://127.0.0.1:8000/api/create_checkpoint" method="POST" name="action_form">
+                <input className='invis' type="text" name="routename" value={dataFromPath[1]}/>
+                <input className='invis' type="text" name="pointnumber" value={dataFromPath[2]}/>
+                <input className='invis' type="text" name="latitude" value={dataFromPath[3]}/>
+                <input className='invis' type="text" name="longitude" value={dataFromPath[4]}/>
+                <input className='invis' type="text" name="activity_title" value={dataFromPath[0]}/>
+                <label>opdracht:</label>
+                <textarea 
+                    type="text" 
+                    name="activity_header"
                     cols={50}
+                    rows={4}
                 ></textarea>
-
-                <button>Done</button>
+                <button type = 'submit'>Done</button>
             </form>
-        </section>
+        </section>                                                      
     );
 }
 
@@ -129,18 +141,29 @@ const CreatePuzzelForm = () =>
 
 const CreateFotoForm = () =>
 {
-    return (  
+    let dataFromPath = DataHandler()
+    return(
         <section className='create-checkpoint'>
-            <form >
-                <label>Foto:</label>
-
-                <button>Done</button>
+            <form action="http://127.0.0.1:8000/api/create_checkpoint" method="POST" name="foto_form">
+                <input className='invis' type="text" name="routename" value={dataFromPath[1]}/>
+                <input className='invis' type="text" name="pointnumber" value={dataFromPath[2]}/>
+                <input className='invis' type="text" name="latitude" value={dataFromPath[3]}/>
+                <input className='invis' type="text" name="longitude" value={dataFromPath[4]}/>
+                <input className='invis' type="text" name="activity_title" value={dataFromPath[0]}/>
+                <label>Geef uitleg van de foto:</label>
+                <textarea 
+                    type="text" 
+                    name="activity_header"
+                    cols={50}
+                    rows={4}
+                ></textarea>
+                <button type='submit'>Done</button>
             </form>
         </section>
-    );
+    )  
 }
 
-const DataHandler = (commentId = null, puzzleId = null, puzzleAwnserId = null) =>
+const DataHandler = () =>
 {
     let dataArray = new Array();
     const pathDataArray = window.location.pathname.split("/");
@@ -161,25 +184,11 @@ const DataHandler = (commentId = null, puzzleId = null, puzzleAwnserId = null) =
             case "checkpoint":
                 break
             default:
-                console.warn(element)
                 dataArray.push(element)
         }
     }
 
-    const idArray = [commentId, puzzleId, puzzleAwnserId]
-    for(let i = 0; i<idArray.length; i++)
-    {
-        let id = idArray[i]
-        if(id != null)
-            dataArray.push(document.getElementById(id).value)
-    }
-
-    let pathString = "";
-    for(let i = 0; i<dataArray.length; i++)
-        pathString += `/${dataArray[i]}`
-
-
-    window.location.href = `/linkhandler/submit_data${pathString}`;
+    return dataArray;
 }
  
 export {
