@@ -594,9 +594,9 @@ to {
   margin-bottom: 30px;
 }
 
-.create-checkpoint input,
-.create-checkpoint textarea,
-.create-checkpoint select {
+.form input,
+.form textarea,
+.form select {
   display: block;
 
   box-sizing: border-box;
@@ -625,7 +625,6 @@ to {
   }
 }
 
-.invis 
-{
+.invis {
   display: none !important;
 }

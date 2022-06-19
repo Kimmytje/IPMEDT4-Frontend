@@ -70,7 +70,7 @@ const CreateCommentForm = () =>
 {
     let dataFromPath = DataHandler()
     return (  
-        <section className='create-checkpoint'>
+        <section className='form'>
             <form action="http://127.0.0.1:8000/api/create_checkpoint" method="POST" name="comment_form">
                 <input className='invis' type="text" name="routename" value={dataFromPath[1]}/>
                 <input className='invis' type="text" name="pointnumber" value={dataFromPath[2]}/>
@@ -94,7 +94,7 @@ const CreateActionForm = () =>
 {
     let dataFromPath = DataHandler()
     return (
-            <section className='create-checkpoint'>
+            <section className='form'>
             <form action="http://127.0.0.1:8000/api/create_checkpoint" method="POST" name="action_form">
                 <input className='invis' type="text" name="routename" value={dataFromPath[1]}/>
                 <input className='invis' type="text" name="pointnumber" value={dataFromPath[2]}/>
@@ -143,7 +143,7 @@ const CreateFotoForm = () =>
 {
     let dataFromPath = DataHandler()
     return(
-        <section className='create-checkpoint'>
+        <section className='form'>
             <form action="http://127.0.0.1:8000/api/create_checkpoint" method="POST" name="foto_form">
                 <input className='invis' type="text" name="routename" value={dataFromPath[1]}/>
                 <input className='invis' type="text" name="pointnumber" value={dataFromPath[2]}/>
