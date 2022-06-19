@@ -108,7 +108,7 @@ const CreateActionForm = () =>
                     cols={50}
                     rows={4}
                 ></textarea>
-                <button type = 'submit'>Done</button>
+                <button type='submit'>Done</button>
             </form>
         </section>                                                      
     );
