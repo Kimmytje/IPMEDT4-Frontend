@@ -576,26 +576,27 @@ to {
 
 /* Form */
 
-.create-checkpoint {
+.form {
   max-width: 400px;
   margin: 0 auto;
+  padding-top: 4rem;
 
   text-align: center;
 }
 
-.create-checkpoint label {
+.form label {
   display: block;
 
   text-align: left;
 }
 
-.create-checkpoint h2 {
+.form h2 {
   margin-bottom: 30px;
 }
 
-.create-checkpoint input,
-.create-checkpoint textarea,
-.create-checkpoint select {
+.form input,
+.form textarea,
+.form select {
   display: block;
 
   box-sizing: border-box;
@@ -607,7 +608,7 @@ to {
   border-radius: 1rem;
 }
 
-.create-checkpoint button {
+.form button {
   padding: 1rem;
 
   cursor: pointer;
