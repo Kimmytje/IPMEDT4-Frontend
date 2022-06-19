@@ -8,6 +8,7 @@ import {Create, CreateWalk, CreateNow} from './Create';
 import {LngLatAdder, LngLatGetter} from './LinksHandler';
 import CreateRouteName from './RouteName';
 import {CheckpointSelect, CreateCommentForm, CreatePuzzelForm, CreateActionForm, CreateFotoForm} from './Checkpoint';
+import { GameHandler } from "./Game";
 
 import Play from './Play';
 
@@ -110,6 +111,10 @@ function App() {
                 <Back/>
       
                 <Play/>
+              </Route>
+
+              <Route path="/play">
+                <GameHandler/>
               </Route>
 
             </Switch>

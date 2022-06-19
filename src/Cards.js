@@ -52,18 +52,20 @@ const GameCardList = (props) => {
     return ( 
         <section className="routeCards">
             {cards.map((routeCard) => (
-                <section className="routeCard">
-                    <figure className="routeCard-image">
-                        <img className="featured" src={`/Images/Panorama/${routeCard.routename.toLowerCase()}.jpg`} />
-                    </figure>
+                <a href="/game">
+                    <section className="routeCard">
+                        <figure className="routeCard-image">
+                            <img className="featured" src={`/Images/Panorama/${routeCard.routename.toLowerCase()}.jpg`} />
+                        </figure>
 
-                    <section className="routeCard-header"></section>
+                        <section className="routeCard-header"></section>
 
-                    <section className="routeCard-body">
-                        <h3 className="routeCard-title"> {routeCard.routename} </h3>
-                        <p className="routeCard-location"> {routeCard.regio} </p>
+                        <section className="routeCard-body">
+                            <h3 className="routeCard-title"> {routeCard.routename} </h3>
+                            <p className="routeCard-location"> {routeCard.regio} </p>
+                        </section>
                     </section>
-                </section>
+                </a>
             ))}
         </section>
         
