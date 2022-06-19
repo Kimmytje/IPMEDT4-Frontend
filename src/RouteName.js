@@ -1,6 +1,3 @@
-import { useState, useEffect } from 'react';
-import ButtonList from './Buttons';
-
 let inputValue;
 
 const CreateRouteName = () =>
@@ -11,15 +8,17 @@ const CreateRouteName = () =>
         window.location.href = `/create/${inputValue}/0`
     }
     return (  
-        <section className='create-checkpoint'>
-            <label>Vul route naam:</label>
-            <input
-                id='nameInput'
-                type="text" 
-                required
-            />
-            <button onClick={ButtonHandler}>Done</button>
-        </section>
+        <article className='name'>
+            <section className='form'>
+                <label>Vul route naam:</label>
+                <input
+                    id='nameInput'
+                    type="text" 
+                    required
+                />
+                <button onClick={ButtonHandler}>Done</button>
+            </section>
+        </article>
     );
 }
 

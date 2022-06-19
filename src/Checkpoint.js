@@ -34,7 +34,7 @@ const CheckpointSelect = () => {
 const CreateMultipleChoiceForm = () =>
 {
     return (  
-        <section className='create-checkpoint'>
+        <section className='form'>
             <form >
                 <label>Vraag:</label>
                 <textarea
@@ -117,7 +117,7 @@ const CreateActionForm = () =>
 const CreatePuzzelForm = () =>
 {
     return (  
-        <section className='create-checkpoint'>
+        <section className='form'>
             <form >
                 <label>Raadsel:</label>
                 <textarea
