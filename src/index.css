@@ -619,6 +619,10 @@ to {
   background: #392165;
 }
 
+.notfound > section > p {
+  padding: 5rem;
+}
+
 @media(max-width: 550px) {
   .routeCards {
     grid-template-columns: repeat(2, 1fr);
