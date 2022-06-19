@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 
+import Loading from "./Loading";
 import {GameCardList} from './Cards';
 
 import axios from "axios";
@@ -10,6 +11,8 @@ let d;
 
 const Play = () => {
     const [routes, setRoutes] = useState([])
+    const [isPending, setisPending] = useState(true)
+
     useEffect(() => {
         async function getAllRoutes() {
           try {
@@ -17,18 +20,22 @@ const Play = () => {
             
             d = routes.data;
             setRoutes(routes.data)
+            setisPending(false);
     
           } catch (error) {
             console.log(error)
           }
         }
         getAllRoutes()
+        
       }, [])
       console.log(d);
       
 
     return (  
-        <>     
+        <>
+          {isPending && <Loading/>}
+
             <article className="play">
                 <section className="gamecards-container">
                     <GameCardList cards={routes}/>

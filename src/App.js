@@ -1,7 +1,5 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
-
 import Home from './Home';
+
 import Back from './Back';
 
 import {Create, CreateWalk, CreateNow} from './Create';
@@ -14,25 +12,8 @@ import Play from './Play';
 
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-let d;
 
 function App() {
-  const [routes, setRoutes] = useState([])
-  useEffect(() => {
-    async function getAllRoutes() {
-      try {
-        const routes = await axios.get("http://127.0.0.1:8000/api/") //de route van je localhost 
-        
-        d = routes.data;
-        setRoutes(routes.data)
-
-      } catch (error) {
-        console.log(error)
-      }
-    }
-    getAllRoutes()
-  }, [])
-  console.log(d);
   return (
     <>   
       <Router>
