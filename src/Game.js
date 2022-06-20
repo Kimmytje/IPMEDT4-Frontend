@@ -15,16 +15,20 @@ const GetDataFromDatabase = (nName = 2, nCount = 3) =>
     const path = window.location.pathname;
     gameName = path.split('/')[nName]
     checkpointCounter = path.split('/')[nCount]
-    useEffect(() => {
+    
         async function getAllCheckpointData() {
             try {
                 const checkpoints = await axios.get("http://127.0.0.1:8000/api/checkpoints") //de route van je localhost 
-                
+
                 if (!window.isScriptLoaded) 
                 {
                     d = checkpoints.data;
+                    console.log(d);
+                    console.log("hi");
+
                     for(let i =0; i<d.length; i++)
                     {
+                        console.log('bye');
                         d[i].routename = d[i].routename.replace("%20", " ")
                         d[i].routename = d[i].routename.replace("%7D", "")
                         if(d[i].routename === gameName)
@@ -49,7 +53,6 @@ const GetDataFromDatabase = (nName = 2, nCount = 3) =>
             }
         }
         getAllCheckpointData()
-    }, [])
 }
 
 const LeafIcon = L.Icon.extend({
@@ -101,7 +104,14 @@ const GoToActivity = () =>
 
 const GameHandler = () =>
 {
-    GetDataFromDatabase()
+    const [isPending, setisPending] = useState(true)
+
+    useEffect(() => {
+        GetDataFromDatabase()
+        console.log();
+        setisPending(false);
+    }, [])
+    
     return(
         <>
             <Back/>
@@ -109,7 +119,7 @@ const GameHandler = () =>
                 <TileLayer
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 />
-                <GetPlayerLocation />
+                {!isPending && <GetPlayerLocation />}
             </MapContainer>
             <section>
                 <p>Deze button is voor dev only en zal niet in de officiele game avaible zijn</p>
