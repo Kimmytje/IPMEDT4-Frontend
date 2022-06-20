@@ -29,7 +29,6 @@ const Play = () => {
         getAllRoutes()
         
       }, [])
-      console.log(d);
       
 
     return (  
@@ -41,7 +40,7 @@ const Play = () => {
                     <GameCardList cards={routes}/>
                 </section>
 
-                <Link to="/create">
+                <Link to="/name">
                     <section className="btn-secondary button-list">
                         <p>Eigen route?</p>
                     </section>

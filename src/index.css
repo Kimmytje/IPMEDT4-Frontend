@@ -687,3 +687,7 @@ to {
     grid-template-columns: repeat(2, 1fr);
   }
 }
+
+.invis {
+  display: none !important;
+}

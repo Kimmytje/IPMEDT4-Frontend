@@ -7,6 +7,7 @@ import {LngLatAdder, LngLatGetter} from './LinksHandler';
 import CreateRouteName from './RouteName';
 import NotFound from './404';
 import {CheckpointSelect, CreateCommentForm, CreatePuzzelForm, CreateActionForm, CreateFotoForm} from './Checkpoint';
+import { GameHandler, ActivityHandler, FinishScreen } from "./Game";
 
 import Play from './Play';
 
@@ -21,34 +22,34 @@ function App() {
           {/* <Navbar/> */}
           <section className="content">
             <Switch>
-            {/*======= Home ====== */}
+            {/* ======= Home ====== */}
               <Route exact path="/">
                 {/* <Navbar/> */}
                 <Home />
               </Route>
 
-            {/*======= Playable routes ====== */}
+            {/* ======= Playable routes ====== */}
               <Route path="/play">
                   <Back/>
         
                   <Play/>
                 </Route>
 
-            {/*======= Name for route ====== */}
+            {/* ======= Name for route ====== */}
               <Route exact path="/name">
                 <Back/>
 
                 <CreateRouteName />
               </Route>
 
-            {/*======= Create a route ====== */}
+            {/* ======= Create a route ====== */}
               <Route path="/create/">
                   <Back/>
 
                   <Create />
                 </Route>
 
-            {/*======= Create route Map ====== */}
+            {/* ======= Create route Map ====== */}
               <Route path="/create/now/">
                 <Back/>
 
@@ -61,7 +62,7 @@ function App() {
                 <CreateWalk />
               </Route>
 
-            {/*======= Type of Checkpoint select ====== */}
+            {/* ======= Type of Checkpoint select ====== */}
               <Route path="/create/checkpoint/select/">
                 <Back/>
   
@@ -92,7 +93,7 @@ function App() {
                 <CreatePuzzelForm />
               </Route>
 
-            {/*======= Background shit ====== */}
+            {/* ======= Background shit ====== */}
               <Route exact path="/linkhandler">
                 <LngLatAdder />
               </Route>
@@ -100,11 +101,25 @@ function App() {
               <Route exact path="/linkhandler/onlocation">
                 <LngLatGetter />
               </Route>
+              
+            {/* ====== Actual game ====== */}
+              <Route exact path="/game/end">
+                <FinishScreen/>
+              </Route>
 
-            {/*======= 404 (please keep at the end) ====== */}
+              <Route path="/game/activity/">
+                <ActivityHandler/>
+              </Route>
+
+              <Route path="/game/">
+                <GameHandler/>
+              </Route>
+
+            {/* ======= 404 (please keep at the end) ====== */}
               <Route path="*">
                 <NotFound />
               </Route>
+
             </Switch>
           </section>
         </article>

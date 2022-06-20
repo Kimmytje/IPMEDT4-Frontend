@@ -26,7 +26,7 @@ const ActivityCardList = (props) => {
                     <section className="activityCard" key={activityCard.naam}>
                         <section className="activityCard-header">
                             <figure className="activityCard-icon">
-                                <img src={`/Images/` + activityCard.naam + `.png`} alt="Type of checkpoint" />
+                                <img src={`/Images/${activityCard.naam}.png`} alt="Type of checkpoint" />
                             </figure>
                         </section>
                         
@@ -52,24 +52,20 @@ const GameCardList = (props) => {
     return ( 
         <section className="routeCards">
             {cards.map((routeCard) => (
-                <section className="routeCard" key={routeCard.routenummer}>
-                    <figure className="routeCard-image">
-                        <img className="featured" src={`/Images/Panorama/` + routeCard.stad.toLowerCase() + `.jpg`} alt="Short description" />
-                    </figure>
+                <a href={`/game/${routeCard.routename}/0`}>
+                    <section className="routeCard">
+                        <figure className="routeCard-image">
+                            <img className="featured" src={`/Images/Panorama/${routeCard.routename.toLowerCase()}.jpg`} />
+                        </figure>
 
-                    <section className="routeCard-header"></section>
+                        <section className="routeCard-header"></section>
 
-                    <section className="routeCard-body">
-                        <h3 className="routeCard-title"> {routeCard.beginpunt} </h3>
-                        <p className="routeCard-location"> {routeCard.stad} </p>
-
-                        <p className="routeCard-description"> </p>
+                        <section className="routeCard-body">
+                            <h3 className="routeCard-title"> {routeCard.routename} </h3>
+                            <p className="routeCard-location"> {routeCard.regio} </p>
+                        </section>
                     </section>
-
-                    <section className="routeCard-footer">
-                        <p className="routeCard-dificulty"> {routeCard.moeilijkheidsniveau} </p>
-                    </section>
-                </section>
+                </a>
             ))}
         </section>
         

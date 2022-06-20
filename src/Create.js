@@ -4,16 +4,18 @@ import { StartMapClick } from './map_components/start_maps/StartMapClick';
 import StartMapLoc from './map_components/start_maps/StartMapLoc';
 
 let nameOfRoute;
+let currentNumber;
 
 // Choose to walk or make route from home
 const Create = () => {
     const path = window.location.pathname
     const pathArray = path.split("/")
-    nameOfRoute = pathArray[pathArray.length-1];
+    nameOfRoute = pathArray[pathArray.length-2];
 
     const [buttons, setButtons] = useState([
-        {title: 'Maak op afstand', link: `/create/now/${nameOfRoute}`},
-        {title: 'Maak lopend', link: `/create/walk/${nameOfRoute}`}
+        {title: 'plaats op afstand', link: `/create/now/${nameOfRoute}/${CheckpointNumberHandler(pathArray[pathArray.length-1])}`},
+        {title: 'plaats op locatie', link: `/create/walk/${nameOfRoute}/${CheckpointNumberHandler(pathArray[pathArray.length-1])}`},
+        {title: 'Route afronden', link: "/"}
     ]);
 
     return ( 
@@ -29,7 +31,6 @@ const Create = () => {
 const CreateWalk = () => {
     const [buttons, setButtons] = useState([
         {title: 'Plaats checkpoint', link: '/linkhandler/onlocation'},
-        {title: 'Route afronden', link: "/"},
     ]);
 
     return ( 
@@ -44,7 +45,6 @@ const CreateWalk = () => {
 const CreateNow = () => {
     const [buttons, setButtons] = useState([
         {title: 'Plaats checkpoint', link: '/linkhandler'},
-        {title: 'Route afronden', link: "/"},
     ]);
 
     return ( 
@@ -54,10 +54,19 @@ const CreateNow = () => {
         </section>
      );
 }
+
+const CheckpointNumberHandler = (stringNumber) =>
+{
+    let intNumber = parseInt(stringNumber)
+    intNumber++;
+    currentNumber = intNumber;
+    return intNumber;
+}
  
 export {
     Create,
     CreateNow,
     CreateWalk,
-    nameOfRoute
+    nameOfRoute,
+    currentNumber
 }

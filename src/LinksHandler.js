@@ -1,13 +1,14 @@
 import { useState } from 'react';
+import axios from "axios";
 import { curLat, curLng } from './map_components/start_maps/StartMapClick';
 import { locLat, locLng } from './map_components/start_maps/StartMapLoc';
-import { nameOfRoute } from './Create';
+import { nameOfRoute, currentNumber } from './Create';
 
 const LngLatAdder = () =>
 {
     console.warn(nameOfRoute)
     if(curLat == null || curLng == null || nameOfRoute == null) window.history.back();
-    else window.location.href = `/create/checkpoint/select/${nameOfRoute}/${curLat}/${curLng}`;
+    else window.location.href = `/create/checkpoint/select/${nameOfRoute}/${currentNumber}/${curLat}/${curLng}`;
     return ( 
         <section></section>
     )
@@ -17,7 +18,7 @@ const LngLatGetter = () =>
 {
     console.warn(locLat, locLng, nameOfRoute)
     if(locLat == null || locLng == null || nameOfRoute == null) window.history.back();
-    else window.location.href = `/create/checkpoint/select/${nameOfRoute}/${locLat}/${locLng}`;
+    else window.location.href = `/create/checkpoint/select/${nameOfRoute}}/${currentNumber}/${locLat}/${locLng}`;
     return(
         <section></section>
     )
