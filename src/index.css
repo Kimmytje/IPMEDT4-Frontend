@@ -78,11 +78,15 @@ body {
   text-align: center;
 }
 
+/* add any page you want to scroll vertically */
+
 .play {
   overflow-y: auto;
 
   max-height: 100vh;
 }
+
+/* add anyting you want sticky at bottom */
 
 .ontop-bot {
   position: sticky;
