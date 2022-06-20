@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import { MapContainer, TileLayer, Marker, Popup, useMapEvents, useMap } from 'react-leaflet'
 import L from "leaflet";
 import axios from "axios";
+import Back from './Back';
+
 let d;
 let checkpointsArray = [];
 let checkpointMarker;
@@ -102,6 +104,7 @@ const GameHandler = () =>
     GetDataFromDatabase()
     return(
         <>
+            <Back/>
             <MapContainer center={[51.9813876, 4.4700281]} zoom={7} scrollWheelZoom={true}>
                 <TileLayer
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
