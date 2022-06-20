@@ -8,6 +8,8 @@ let checkpointsArray = new Array();
 let checkpointMarker;
 let gameName;
 let checkpointCounter;
+let lat;
+let lng;
 
 const GetDataFromDatabase = (nName = 2, nCount = 3) =>
 {
@@ -40,6 +42,7 @@ const GetDataFromDatabase = (nName = 2, nCount = 3) =>
                         // verwacht dat id's niet gevonden wordt
                         // niet echt een error dus
                     }
+                    GetCheckpointFromDatabase()
                     window.isScriptLoaded = true;
                 }
 
@@ -63,9 +66,8 @@ let summerIcon = new LeafIcon({iconUrl: require("./Images/icon_summer.png")}),
 const GetCheckpointFromDatabase = () => 
 {
     let currentCheckpointData = checkpointsArray[checkpointCounter];
-    let lat = parseFloat(currentCheckpointData.latitude)
-    let lng = parseFloat(currentCheckpointData.longitude)
-    return [lat, lng];
+    lat = parseFloat(currentCheckpointData.latitude)
+    lng = parseFloat(currentCheckpointData.longitude);
 }
 
 const GetPlayerLocation = () =>
@@ -80,9 +82,10 @@ const GetPlayerLocation = () =>
             L.circle(location.latlng, radius).addTo(map);
             
             if(!checkpointMarker)
-                checkpointMarker = L.marker(GetCheckpointFromDatabase(), {icon: summerIcon}).addTo(map);
+                console.log("test")
+                checkpointMarker = L.marker([lat, lng], {icon: summerIcon}).addTo(map);
 
-            let nextLoc = new L.LatLng(GetCheckpointFromDatabase()[0], GetCheckpointFromDatabase()[1])
+            let nextLoc = new L.LatLng(lat, lng)
             if(nextLoc.distanceTo(location.latlng) < 13) GoToActivity();
         },
     })
