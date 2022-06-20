@@ -57,6 +57,8 @@ body {
   font-family: "Lemon";
   font-size: 1.8rem;
 
+  overflow: hidden;
+
   width: 100vw;
   height: 100vh;
 
@@ -68,11 +70,27 @@ body {
   position: relative;
 
   max-width: 80rem;
+  max-height: 100vh;
   margin: auto;
   padding: 2rem;
   padding-top: 4rem;
 
   text-align: center;
+}
+
+.play {
+  overflow-y: auto;
+
+  max-height: 100vh;
+}
+
+.ontop-bot {
+  position: sticky;
+  z-index: 50;
+  bottom: 2rem;
+
+  width: 90%;
+  margin: auto;
 }
 
 /* Buttons */

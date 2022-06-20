@@ -35,16 +35,19 @@ const Play = () => {
           {isPending && <Loading/>}
 
             <article className="play">
-                <section className="gamecards-container">
+                <section className="routecards-container">
                     <GameCardList cards={routes}/>
                 </section>
-
-                <Link to="/name">
-                    <section className="btn-secondary button-list">
-                        <p>Eigen route?</p>
-                    </section>
-                </Link>
             </article>
+
+            <section className='ontop-bot'>
+              <Link to="/name">
+                  <section className="btn-secondary button-list">
+                      <p>Eigen route?</p>
+                  </section>
+              </Link>
+            </section>
+            
         </>
     );
 }
