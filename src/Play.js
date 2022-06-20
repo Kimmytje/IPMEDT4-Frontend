@@ -24,7 +24,6 @@ const Play = () => {
         }
         getAllRoutes()
       }, [])
-      console.log(d);
       
 
     return (  

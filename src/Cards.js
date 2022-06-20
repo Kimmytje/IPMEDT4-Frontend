@@ -52,7 +52,7 @@ const GameCardList = (props) => {
     return ( 
         <section className="routeCards">
             {cards.map((routeCard) => (
-                <a href="/game">
+                <a href={`/game/${routeCard.routename}/0`}>
                     <section className="routeCard">
                         <figure className="routeCard-image">
                             <img className="featured" src={`/Images/Panorama/${routeCard.routename.toLowerCase()}.jpg`} />

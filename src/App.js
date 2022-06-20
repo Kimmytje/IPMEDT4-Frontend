@@ -8,7 +8,7 @@ import {Create, CreateWalk, CreateNow} from './Create';
 import {LngLatAdder, LngLatGetter} from './LinksHandler';
 import CreateRouteName from './RouteName';
 import {CheckpointSelect, CreateCommentForm, CreatePuzzelForm, CreateActionForm, CreateFotoForm} from './Checkpoint';
-import { GameHandler } from "./Game";
+import { GameHandler, ActivityHandler, FinishScreen } from "./Game";
 
 import Play from './Play';
 
@@ -32,7 +32,6 @@ function App() {
     }
     getAllRoutes()
   }, [])
-  console.log(d);
   return (
     <>   
       <Router>
@@ -113,7 +112,15 @@ function App() {
                 <Play/>
               </Route>
 
-              <Route path="/play">
+              <Route exact path="/game/end">
+                <FinishScreen/>
+              </Route>
+
+              <Route path="/game/activity/">
+                <ActivityHandler/>
+              </Route>
+
+              <Route path="/game/">
                 <GameHandler/>
               </Route>
 
