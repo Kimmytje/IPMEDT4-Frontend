@@ -1,10 +1,9 @@
 import { useState, useEffect } from 'react';
-import { Link } from "react-router-dom";
 import { MapContainer, TileLayer, Marker, Popup, useMapEvents, useMap } from 'react-leaflet'
 import L from "leaflet";
 import axios from "axios";
 let d;
-let checkpointsArray = new Array();
+let checkpointsArray = [];
 let checkpointMarker;
 let gameName;
 let checkpointCounter;
@@ -26,7 +25,7 @@ const GetDataFromDatabase = (nName = 2, nCount = 3) =>
                     {
                         d[i].routename = d[i].routename.replace("%20", " ")
                         d[i].routename = d[i].routename.replace("%7D", "")
-                        if(d[i].routename == gameName)
+                        if(d[i].routename === gameName)
                         {
                             checkpointsArray.push(d[i])
                         }

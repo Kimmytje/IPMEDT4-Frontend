@@ -275,7 +275,7 @@ img {
 
   transition: height 0.5s;
 
-  background-color: #E95A28;
+  background-color: var(--green);
 }
 
 /*

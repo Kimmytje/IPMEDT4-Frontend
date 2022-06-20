@@ -42,13 +42,6 @@ function App() {
                 <CreateRouteName />
               </Route>
 
-            {/* ======= Create a route ====== */}
-              <Route path="/create/">
-                  <Back/>
-
-                  <Create />
-                </Route>
-
             {/* ======= Create route Map ====== */}
               <Route path="/create/now/">
                 <Back/>
@@ -60,7 +53,7 @@ function App() {
                 <Back/>
 
                 <CreateWalk />
-              </Route>
+              </Route>          
 
             {/* ======= Type of Checkpoint select ====== */}
               <Route path="/create/checkpoint/select/">
@@ -92,6 +85,13 @@ function App() {
 
                 <CreatePuzzelForm />
               </Route>
+
+            {/* ======= Create a route ====== */}
+              <Route path="/create/">
+                  <Back/>
+
+                  <Create />
+                </Route>  
 
             {/* ======= Background shit ====== */}
               <Route exact path="/linkhandler">
