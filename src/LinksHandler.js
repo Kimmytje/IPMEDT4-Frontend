@@ -1,5 +1,3 @@
-import { useState } from 'react';
-import axios from "axios";
 import { curLat, curLng } from './map_components/start_maps/StartMapClick';
 import { locLat, locLng } from './map_components/start_maps/StartMapLoc';
 import { nameOfRoute, currentNumber } from './Create';

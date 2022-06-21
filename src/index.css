@@ -1,3 +1,18 @@
+@property --swing-x {
+
+initial-value: 0;
+inherits: false;
+syntax: '<integer>';
+
+}
+@property --swing-y {
+
+initial-value: 0;
+inherits: false;
+syntax: '<integer>';
+
+}
+
 :root {
   --background: #1a1a1a;
 
@@ -15,6 +30,7 @@
 
   --pink: #E91E63;
   --pink50: #E91E6350;
+  --pink25: #E91E6325;
 
   /* Magenta variations */
 
@@ -25,7 +41,41 @@
   /* White variations */
 
   --white: #ECF0F1;
-  --white10: #ECF0F110;
+  --white20: #ECF0F120;
+
+  /* 404 page */
+
+  --button: #b3b3b3;
+  --button-color: #0a0a0a;
+  --shadow: #000;
+  --bg: #737373;
+  --header: #7a7a7a;
+  --color: #fafafa;
+  --lit-header: #e6e6e6;
+  --speed: 2s;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+
+  color: var(--background);
+}
+
+::-webkit-scrollbar-track {
+  color: var(--green50);
+  border-radius: 100vw;
+
+  margin-block: 5rem 0;
+}
+
+::-webkit-scrollbar-thumb {
+  border: .05vw solid var(--bg);
+  border-radius: 100vw;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  border-color: var(--bg);
+  background-color: var(--green50);
 }
 
 *,
@@ -34,6 +84,9 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+
+  scrollbar-width: thin;
+  scrollbar-color: var(--green50);
 }
 
 .material-icons {
@@ -45,34 +98,94 @@
   color: var(--white);
 }
 
+.invis {
+  display: none !important;
+}
+
 html {
   font-size: 62.5%; /* 1rem = 10px */
 
   box-sizing: inherit;
+}
 
-  scroll-behavior: smooth;
+@media(prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
 }
 
 body {
   font-family: "Lemon";
   font-size: 1.8rem;
 
+  overflow: hidden;
+
   width: 100vw;
   height: 100vh;
 
   color: var(--white);
   background-color: var(--background);
+
+  overscroll-behavior: none;
 }
 
 .content {
   position: relative;
 
   max-width: 80rem;
+  max-height: 100vh;
   margin: auto;
   padding: 2rem;
   padding-top: 4rem;
 
   text-align: center;
+}
+
+/* add any page you want to scroll vertically */
+
+.play {
+  overflow-y: auto;
+
+  max-height: 94vh;
+}
+
+.play::before {
+  position: absolute;
+  z-index: 9;
+  top: 4rem;
+  left: 0;
+
+  width: 100vw;
+  height: 3rem;
+
+  content: '';
+
+  background: linear-gradient(to bottom, var( --background) , transparent);
+}
+
+.play::after {
+  position: absolute;
+  z-index: 9;
+  bottom: 1rem;
+  left: 0;
+
+  width: 100vw;
+  height: 3rem;
+
+  content: '';
+
+  background: linear-gradient(to top, var( --background) , transparent);
+}
+
+/* add anyting you want sticky at bottom */
+
+.ontop-bot {
+  position: sticky;
+  z-index: 50;
+  bottom: 2rem;
+
+  width: 90%;
+  margin: auto;
 }
 
 /* Buttons */
@@ -106,12 +219,72 @@ button /* Remove button style */ {
   color: var(--white);
   border: .1rem solid var(--magenta);
   border-radius: 1rem;
-  background-color: var(--white10);
+  background-color: var(--white20);
 }
 
 .btn-back {
   position: absolute;
+  z-index: 999999;
   left: 2rem;
+}
+
+/* Loading */
+
+.loading {
+  position: relative;
+
+  display: inline-block;
+
+  width: 80px;
+  height: 80px;
+}
+
+.loading section {
+  position: absolute;
+  left: 8px;
+
+  display: inline-block;
+
+  width: 16px;
+
+  animation: loading 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+
+  background: #fff;
+}
+
+.loading section:nth-child(1) {
+  left: 8px;
+
+  animation-delay: -0.24s;
+}
+
+.loading section:nth-child(2) {
+  left: 32px;
+
+  animation-delay: -0.12s;
+}
+
+.loading section:nth-child(3) {
+  left: 56px;
+
+  animation-delay: 0;
+}
+
+@keyframes loading {
+
+0% {
+  top: 8px;
+
+  height: 64px;
+}
+
+50%,
+100% {
+  top: 24px;
+
+  height: 32px;
+}
+
 }
 
 /* Navigation */
@@ -202,6 +375,7 @@ img {
 
   cursor: pointer;
 
+  border-radius: 2.5rem;
   background-color: #FFF;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12) , 0 1px 2px rgba( 0, 0, 0, 0.24);
 }
@@ -216,7 +390,8 @@ img {
 
   transition: height 0.5s;
 
-  background-color: #E95A28;
+  border-radius: 2.5rem 2.5rem 0 0;
+  background-color: var(--green);
 }
 
 /*
@@ -316,12 +491,12 @@ img {
   transition-delay: 0.5s;
 }
 
-/*
-If we ever want to make the cards bigger and add more Examples
 .activityCard:hover .activityCard-body .activityCard-examples li:nth-child(3) {
   transition-delay: 0.75s;
 }
 
+/*
+If we ever want to make the cards bigger and add more Examples
 .activityCard:hover .activityCard-body .activityCard-examples li:nth-child(4) {
   transition-delay: 1s;
 }
@@ -374,6 +549,7 @@ to {
 
   width: 16rem;
   height: 30rem;
+  margin: auto;
 
   cursor: pointer;
   -webkit-transition: all 0.65s ease;
@@ -421,7 +597,7 @@ to {
   transform: scale(1.3, 1.3);
   animation-name: zoom;
 
-  opacity: 1;
+  opacity: .6;
 
   object-fit: cover;
 }
@@ -467,7 +643,7 @@ to {
   color: white;
   background: -webkit-linear-gradient(white, #a1a1a1);
   -webkit-background-clip: text;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  text-shadow: 0 1px 2px var(--pink25);
 
   justify-self: center;
   -webkit-text-fill-color: transparent;
@@ -476,6 +652,7 @@ to {
 .routeCard:hover .routeCard-title {
   background: -webkit-linear-gradient(white, #c1c1c1);
   -webkit-background-clip: text;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 
   -webkit-text-fill-color: transparent;
 }
@@ -619,14 +796,177 @@ to {
   background: #392165;
 }
 
-@media(max-width: 550px) {
+/* Page not found */
+
+.notfound {
+  font-family: 'Roboto', sans-serif;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+
+  min-width: 100vw;
+  min-height: 100vh;
+
+  color: var(--color);
+  background: var(--bg);
+
+  perspective: 1200px;
+}
+
+.notfound .btn-primary {
+  font-size: 1.8rem;
+
+  max-width: 20rem;
+  margin: auto;
+  padding: 1rem 4rem;
+
+  text-decoration: none;
+  letter-spacing: 0.08rem;
+  text-transform: uppercase;
+
+  color: var(--button-color);
+  border-radius: 6.4rem;
+  background: var(--button);
+}
+
+.notfound p {
+  font-weight: 100;
+}
+
+.notfound h1 {
+  font-family: 'Open Sans', sans-serif;
+  font-size: clamp(8rem, 40vmin, 32rem);
+
+  margin: 0;
+  margin-bottom: 1.6rem;
+
+  transform: translate3d(0, 0, 0vmin);
+  -webkit-animation: swing var(--speed) infinite alternate ease-in-out;
+  animation: swing var(--speed) infinite alternate ease-in-out;
+  letter-spacing: 1.6rem;
+
+  opacity: .7;
+  background: radial-gradient(var( --lit-header) , var( --header) 45%) var( --x) 100%/200% 200%;
+  -webkit-background-clip: text;
+
+  --x: calc(50% +( var( --swing-x) * 0.5) * 1%);
+}
+
+.notfound h1:after {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+
+  content: "404";
+  transform: scale(1.05) translate3d( 0, 12%, -10vmin) translate( calc( ( var( --swing-x, 0) * 0.05) * 1%) , calc( ( var( --swing-y) * 0.05) * 1%) );
+  -webkit-animation: swing var(--speed) infinite alternate ease-in-out;
+  animation: swing var(--speed) infinite alternate ease-in-out;
+
+  color: var(--shadow);
+
+  filter: blur(1.5vmin);
+}
+
+.spotlight {
+  width: 100%;
+  height: 100%;
+
+  transform: rotate(calc( var( --swing-x) * -0.25deg) );
+  transform-origin: 50% 30%;
+  animation: swing var(--speed) infinite alternate-reverse ease-in-out;
+
+  background: radial-gradient(40% 40% at 50% 42%, transparent, #000 35%);
+}
+
+.spotlight-wrapper {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  overflow: hidden;
+}
+
+.spotlight-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  width: 250vmax;
+  height: 250vmax;
+
+  transform: translate(-50%, -50%);
+}
+
+.notfound-info {
+  line-height: 1.5;
+
+  z-index: 2;
+
+  max-width: clamp(25.6rem, 90vmin, 40rem);
+
+  text-align: center;
+}
+
+.notfound-info > p {
+  margin-bottom: 4.8rem;
+}
+
+@-webkit-keyframes swing {
+
+0% {
+  --swing-x: -100;
+  --swing-y: -100;
+}
+
+50% {
+  --swing-y: 0;
+}
+
+100% {
+  --swing-y: -100;
+  --swing-x: 100;
+}
+
+}
+@keyframes swing {
+
+0% {
+  --swing-x: -100;
+  --swing-y: -100;
+}
+
+50% {
+  --swing-y: 0;
+}
+
+100% {
+  --swing-y: -100;
+  --swing-x: 100;
+}
+
+}
+
+@media(max-width: 650px) {
   .routeCards {
     grid-template-columns: repeat(2, 1fr);
   }
-}
 
-.invis {
-  display: none !important;
+  * {
+    scrollbar-width: none;
+  }
+
+  ::-webkit-scrollbar {
+    width: 0;
+  }
 }
 
 .dev-section {

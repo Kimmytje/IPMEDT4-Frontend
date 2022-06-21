@@ -1,12 +1,11 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
-
 import Home from './Home';
+
 import Back from './Back';
 
 import {Create, CreateWalk, CreateNow} from './Create';
 import {LngLatAdder, LngLatGetter} from './LinksHandler';
 import CreateRouteName from './RouteName';
+import NotFound from './404';
 import {CheckpointSelect, CreateCommentForm, CreatePuzzelForm, CreateActionForm, CreateFotoForm} from './Checkpoint';
 import { GameHandler, ActivityHandler, FinishScreen } from "./Game";
 
@@ -14,24 +13,9 @@ import Play from './Play';
 
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-let d;
 
 function App() {
-  const [routes, setRoutes] = useState([])
-  useEffect(() => {
-    async function getAllRoutes() {
-      try {
-        const routes = await axios.get("http://127.0.0.1:8000/api/") //de route van je localhost 
-        
-        d = routes.data;
-        setRoutes(routes.data)
-
-      } catch (error) {
-        console.log(error)
-      }
-    }
-    getAllRoutes()
-  }, [])
+  
   return (
     <>   
       <Router>
@@ -39,15 +23,44 @@ function App() {
           {/* <Navbar/> */}
           <section className="content">
             <Switch>
+            {/* ======= Home ====== */}
               <Route exact path="/">
                 {/* <Navbar/> */}
                 <Home />
               </Route>
 
+            {/* ======= Playable routes ====== */}
+              <Route path="/play">
+                  <Back/>
+        
+                  <Play/>
+                </Route>
+
+            {/* ======= Name for route ====== */}
               <Route exact path="/name">
                 <Back/>
 
                 <CreateRouteName />
+              </Route>
+
+            {/* ======= Create route Map ====== */}
+              <Route path="/create/now/">
+                <Back/>
+
+                <CreateNow />
+              </Route>
+
+              <Route path="/create/walk/">
+                <Back/>
+
+                <CreateWalk />
+              </Route>          
+
+            {/* ======= Type of Checkpoint select ====== */}
+              <Route path="/create/checkpoint/select/">
+                <Back/>
+  
+                <CheckpointSelect />
               </Route>
 
               <Route path="/create/checkpoint/opdracht/">
@@ -74,44 +87,23 @@ function App() {
                 <CreatePuzzelForm />
               </Route>
 
-              <Route path="/create/checkpoint/select/">
-                <Back/>
-  
-                <CheckpointSelect />
-              </Route>
-
-                <Route path="/create/now/">
-                  <Back/>
-
-                  <CreateNow />
-                </Route>
-
-                <Route path="/create/walk/">
-                  <Back/>
-
-                  <CreateWalk />
-                </Route>
-
-                <Route path="/create/">
+            {/* ======= Create a route ====== */}
+              <Route path="/create/">
                   <Back/>
 
                   <Create />
-                </Route>
+                </Route>  
 
-                <Route exact path="/linkhandler">
-                  <LngLatAdder />
-                </Route>
-
-                <Route exact path="/linkhandler/onlocation">
-                  <LngLatGetter />
-                </Route>
-
-              <Route path="/play">
-                <Back/>
-      
-                <Play/>
+            {/* ======= Background shit ====== */}
+              <Route exact path="/linkhandler">
+                <LngLatAdder />
               </Route>
 
+              <Route exact path="/linkhandler/onlocation">
+                <LngLatGetter />
+              </Route>
+              
+            {/* ====== Actual game ====== */}
               <Route exact path="/game/end">
                 <FinishScreen/>
               </Route>
@@ -122,6 +114,11 @@ function App() {
 
               <Route path="/game/">
                 <GameHandler/>
+              </Route>
+
+            {/* ======= 404 (please keep at the end) ====== */}
+              <Route path="*">
+                <NotFound />
               </Route>
 
             </Switch>

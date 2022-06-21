@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 import {ActivityCardList} from './Cards';
+import Loading from "./Loading";
+
 
 import axios from 'axios';
 
@@ -7,6 +9,8 @@ let d;
 
 const CheckpointSelect = () => {
     const [cards, setCards] = useState([]);
+    const [isPending, setisPending] = useState([true]);
+
     useEffect(() => {
         async function getAllCards() {
           try {
@@ -14,6 +18,7 @@ const CheckpointSelect = () => {
             
             d = cards.data;
             setCards(cards.data)
+            setisPending(false);
     
           } catch (error) {
             console.log(error)
@@ -25,6 +30,8 @@ const CheckpointSelect = () => {
 
     return (  
         <>
+            {isPending && <Loading/>}
+
             <ActivityCardList cards={cards}/>
         </>
         
@@ -165,7 +172,7 @@ const CreateFotoForm = () =>
 
 const DataHandler = () =>
 {
-    let dataArray = new Array();
+    let dataArray = [];
     const pathDataArray = window.location.pathname.split("/");
     for(let i = 0; i<pathDataArray.length; i++)
     {
