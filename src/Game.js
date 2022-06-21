@@ -3,13 +3,16 @@ import { Link } from "react-router-dom";
 import { MapContainer, TileLayer, Marker, Popup, useMapEvents, useMap } from 'react-leaflet'
 import L from "leaflet";
 import axios from "axios";
+import "./index.css";
 let d;
 let checkpointsArray = new Array();
 let checkpointMarker;
 let gameName;
 let checkpointCounter;
+let circle;
 let lat;
 let lng;
+let goToPlayer = true;
 
 const GetDataFromDatabase = (nName = 2, nCount = 3) =>
 {
@@ -36,7 +39,7 @@ const GetDataFromDatabase = (nName = 2, nCount = 3) =>
                     const currentData = checkpointsArray[checkpointCounter]
                     try
                     {
-                        document.getElementById("activity_title").innerHTML = currentData.activity_title;
+                        document.getElementById("activity_title").innerHTML = currentData.activity_title
                         document.getElementById("activity_header").innerHTML = currentData.activity_header;
                     } catch (error) {
                         // verwacht dat id's niet gevonden wordt
@@ -79,14 +82,21 @@ const GetPlayerLocation = () =>
         locationfound: (location) => {
             setPosition(location.latlng)
             let radius = location.accuracy
-            L.circle(location.latlng, radius).addTo(map);
+
+            if(circle == null) circle = L.circle(location.latlng, radius).addTo(map);
+            else circle.setLatLng(location.latlng)
             
             if(!checkpointMarker)
-                console.log("test")
                 checkpointMarker = L.marker([lat, lng], {icon: summerIcon}).addTo(map);
 
             let nextLoc = new L.LatLng(lat, lng)
             if(nextLoc.distanceTo(location.latlng) < 13) GoToActivity();
+
+            if(goToPlayer)
+            {
+                map.flyTo(location.latlng, 18)
+                goToPlayer = false
+            }
         },
     })
     return position === null ? null : (
@@ -94,6 +104,11 @@ const GetPlayerLocation = () =>
             <Popup><p>You are here</p></Popup>
         </Marker>
     )
+}
+
+const FlyToPlayer = () =>
+{
+    goToPlayer = true;
 }
 
 const GoToActivity = () =>
@@ -112,9 +127,10 @@ const GameHandler = () =>
                 />
                 <GetPlayerLocation />
             </MapContainer>
-            <section>
+            <button onClick={FlyToPlayer} className='btn-primary'>Ga naar jouw positie</button>
+            <section className='dev-section'>
                 <p>Deze button is voor dev only en zal niet in de officiele game avaible zijn</p>
-                <button onClick={GoToActivity}>TEST</button>
+                <button className='btn-primary' onClick={GoToActivity}>TEST</button>
             </section>
         </>
     )
@@ -134,10 +150,10 @@ const ActivityHandler = () =>
     return(
         <>
             <section>
-                <h1 id='activity_title'></h1>
-                <p id='activity_header'></p>
+                <h1 className='activity-title' id='activity_title'></h1>
+                <p className='activity-header' id='activity_header'></p>
+                <button className='btn-primary' onClick={GoToGame}>Finish Checkpoint</button>
             </section>
-            <button onClick={GoToGame}>Finish Checkpoint</button>
         </>
     )
 }
@@ -151,9 +167,9 @@ const FinishScreen = () =>
 {
     return(
         <>
-            <h1>Goed gedaan,</h1>
-            <p>je hebt alle checkpoints behaalt</p>
-            <button onClick={ReturnToMenu}>Eindig route</button>
+            <h1 className='activity-title'>Goed gedaan,</h1>
+            <h2>je hebt alle checkpoints behaalt</h2>
+            <button className='btn-primary' onClick={ReturnToMenu}>Eindig route</button>
         </>
     )
 }
