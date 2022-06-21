@@ -42,7 +42,7 @@ const Play = () => {
 
             <section className='ontop-bot'>
               <Link to="/name">
-                  <section className="btn-secondary button-list">
+                  <section className="btn-secondary">
                       <p>Eigen route?</p>
                   </section>
               </Link>
