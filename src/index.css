@@ -1,3 +1,18 @@
+@property --swing-x {
+
+initial-value: 0;
+inherits: false;
+syntax: '<integer>';
+
+}
+@property --swing-y {
+
+initial-value: 0;
+inherits: false;
+syntax: '<integer>';
+
+}
+
 :root {
   --background: #1a1a1a;
 
@@ -26,6 +41,17 @@
 
   --white: #ECF0F1;
   --white10: #ECF0F110;
+
+  /* 404 page */
+
+  --button: #b3b3b3;
+  --button-color: #0a0a0a;
+  --shadow: #000;
+  --bg: #737373;
+  --header: #7a7a7a;
+  --color: #fafafa;
+  --lit-header: #e6e6e6;
+  --speed: 2s;
 }
 
 *,
@@ -43,6 +69,10 @@
   vertical-align: bottom;
 
   color: var(--white);
+}
+
+.invis {
+  display: none !important;
 }
 
 html {
@@ -700,16 +730,167 @@ to {
   background: #392165;
 }
 
-.notfound > section > p {
-  padding: 5rem;
+/* Page not found */
+
+.notfound {
+  font-family: 'Roboto', sans-serif;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+
+  min-width: 100vw;
+  min-height: 100vh;
+
+  color: var(--color);
+  background: var(--bg);
+
+  perspective: 1200px;
+}
+
+.notfound .btn-primary {
+  font-size: 1.8rem;
+
+  max-width: 20rem;
+  margin: auto;
+  padding: 1rem 4rem;
+
+  text-decoration: none;
+  letter-spacing: 0.08rem;
+  text-transform: uppercase;
+
+  color: var(--button-color);
+  border-radius: 6.4rem;
+  background: var(--button);
+}
+
+.notfound p {
+  font-weight: 100;
+}
+
+.notfound h1 {
+  font-family: 'Open Sans', sans-serif;
+  font-size: clamp(8rem, 40vmin, 32rem);
+
+  margin: 0;
+  margin-bottom: 1.6rem;
+
+  transform: translate3d(0, 0, 0vmin);
+  -webkit-animation: swing var(--speed) infinite alternate ease-in-out;
+  animation: swing var(--speed) infinite alternate ease-in-out;
+  letter-spacing: 1.6rem;
+
+  opacity: .7;
+  background: radial-gradient(var( --lit-header) , var( --header) 45%) var( --x) 100%/200% 200%;
+  -webkit-background-clip: text;
+
+  --x: calc(50% +( var( --swing-x) * 0.5) * 1%);
+}
+
+.notfound h1:after {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+
+  content: "404";
+  transform: scale(1.05) translate3d( 0, 12%, -10vmin) translate( calc( ( var( --swing-x, 0) * 0.05) * 1%) , calc( ( var( --swing-y) * 0.05) * 1%) );
+  -webkit-animation: swing var(--speed) infinite alternate ease-in-out;
+  animation: swing var(--speed) infinite alternate ease-in-out;
+
+  color: var(--shadow);
+
+  filter: blur(1.5vmin);
+}
+
+.spotlight {
+  width: 100%;
+  height: 100%;
+
+  transform: rotate(calc( var( --swing-x) * -0.25deg) );
+  transform-origin: 50% 30%;
+  animation: swing var(--speed) infinite alternate-reverse ease-in-out;
+
+  background: radial-gradient(40% 40% at 50% 42%, transparent, #000 35%);
+}
+
+.spotlight-wrapper {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  overflow: hidden;
+}
+
+.spotlight-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  width: 250vmax;
+  height: 250vmax;
+
+  transform: translate(-50%, -50%);
+}
+
+.notfound-info {
+  line-height: 1.5;
+
+  z-index: 2;
+
+  max-width: clamp(25.6rem, 90vmin, 40rem);
+
+  text-align: center;
+}
+
+.notfound-info > p {
+  margin-bottom: 4.8rem;
+}
+
+@-webkit-keyframes swing {
+
+0% {
+  --swing-x: -100;
+  --swing-y: -100;
+}
+
+50% {
+  --swing-y: 0;
+}
+
+100% {
+  --swing-y: -100;
+  --swing-x: 100;
+}
+
+}
+@keyframes swing {
+
+0% {
+  --swing-x: -100;
+  --swing-y: -100;
+}
+
+50% {
+  --swing-y: 0;
+}
+
+100% {
+  --swing-y: -100;
+  --swing-x: 100;
+}
+
 }
 
 @media(max-width: 550px) {
   .routeCards {
     grid-template-columns: repeat(2, 1fr);
   }
-}
-
-.invis {
-  display: none !important;
 }
