@@ -19,7 +19,7 @@ const GetDataFromDatabase = (nName = 2, nCount = 3) =>
     const path = window.location.pathname;
     gameName = path.split('/')[nName]
     checkpointCounter = path.split('/')[nCount]
-    
+    useEffect(() => {
         async function getAllCheckpointData() {
             try {
                 const checkpoints = await axios.get("http://127.0.0.1:8000/api/checkpoints") //de route van je localhost 
@@ -58,6 +58,7 @@ const GetDataFromDatabase = (nName = 2, nCount = 3) =>
             }
         }
         getAllCheckpointData()
+    }, [])
 }
 
 const LeafIcon = L.Icon.extend({
@@ -84,7 +85,6 @@ const GetPlayerLocation = () =>
     map = useMapEvents({
         locationfound: (location) => {
             setPosition(location.latlng)
-            console.log(location.latlng)
             let radius = 30
 
             if(circle == null) circle = L.circle(location.latlng, radius).addTo(map);
@@ -122,13 +122,7 @@ const GoToActivity = () =>
 
 const GameHandler = () =>
 {
-    const [isPending, setisPending] = useState(true)
-
-    useEffect(() => {
-        GetDataFromDatabase()
-        console.log();
-        setisPending(false);
-    }, [])
+    GetDataFromDatabase()
     
     return(
         <>
@@ -137,7 +131,7 @@ const GameHandler = () =>
                 <TileLayer
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 />
-                {!isPending && <GetPlayerLocation />}
+                <GetPlayerLocation />
             </MapContainer>
             <button onClick={FlyToPlayer} className='btn-primary'>Ga naar jouw positie</button>
             <section className='dev-section'>
