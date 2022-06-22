@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
-import { Link } from "react-router-dom";
 import { MapContainer, TileLayer, Marker, Popup, useMapEvents, useMap } from 'react-leaflet'
 import L from "leaflet";
 import axios from "axios";
-import "./index.css";
+import Back from './Back';
+
 let d;
-let checkpointsArray = new Array();
+let checkpointsArray = [];
 let checkpointMarker;
 let gameName;
 let checkpointCounter;
@@ -19,19 +19,23 @@ const GetDataFromDatabase = (nName = 2, nCount = 3) =>
     const path = window.location.pathname;
     gameName = path.split('/')[nName]
     checkpointCounter = path.split('/')[nCount]
-    useEffect(() => {
+    
         async function getAllCheckpointData() {
             try {
                 const checkpoints = await axios.get("http://127.0.0.1:8000/api/checkpoints") //de route van je localhost 
-                
+
                 if (!window.isScriptLoaded) 
                 {
                     d = checkpoints.data;
+                    console.log(d);
+                    console.log("hi");
+
                     for(let i =0; i<d.length; i++)
                     {
+                        console.log('bye');
                         d[i].routename = d[i].routename.replace("%20", " ")
                         d[i].routename = d[i].routename.replace("%7D", "")
-                        if(d[i].routename == gameName)
+                        if(d[i].routename === gameName)
                         {
                             checkpointsArray.push(d[i])
                         }
@@ -54,7 +58,6 @@ const GetDataFromDatabase = (nName = 2, nCount = 3) =>
             }
         }
         getAllCheckpointData()
-    }, [])
 }
 
 const LeafIcon = L.Icon.extend({
@@ -119,14 +122,22 @@ const GoToActivity = () =>
 
 const GameHandler = () =>
 {
-    GetDataFromDatabase()
+    const [isPending, setisPending] = useState(true)
+
+    useEffect(() => {
+        GetDataFromDatabase()
+        console.log();
+        setisPending(false);
+    }, [])
+    
     return(
         <>
+            <Back/>
             <MapContainer center={[51.9813876, 4.4700281]} zoom={7} scrollWheelZoom={true}>
                 <TileLayer
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 />
-                <GetPlayerLocation />
+                {!isPending && <GetPlayerLocation />}
             </MapContainer>
             <button onClick={FlyToPlayer} className='btn-primary'>Ga naar jouw positie</button>
             <section className='dev-section'>
