@@ -12,7 +12,7 @@ let checkpointCounter;
 let circle;
 let lat;
 let lng;
-let goToPlayer = true;
+let goToPlayer = false;
 
 const GetDataFromDatabase = (nName = 2, nCount = 3) =>
 {
@@ -81,7 +81,8 @@ const GetPlayerLocation = () =>
     map = useMapEvents({
         locationfound: (location) => {
             setPosition(location.latlng)
-            let radius = location.accuracy
+            console.log(location.latlng)
+            let radius = 30
 
             if(circle == null) circle = L.circle(location.latlng, radius).addTo(map);
             else circle.setLatLng(location.latlng)
@@ -90,7 +91,7 @@ const GetPlayerLocation = () =>
                 checkpointMarker = L.marker([lat, lng], {icon: summerIcon}).addTo(map);
 
             let nextLoc = new L.LatLng(lat, lng)
-            if(nextLoc.distanceTo(location.latlng) < 13) GoToActivity();
+            if(nextLoc.distanceTo(location.latlng) < 30) GoToActivity();
 
             if(goToPlayer)
             {
