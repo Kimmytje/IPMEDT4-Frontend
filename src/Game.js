@@ -28,11 +28,9 @@ const GetDataFromDatabase = (nName = 2, nCount = 3) =>
                 {
                     d = checkpoints.data;
                     console.log(d);
-                    console.log("hi");
 
                     for(let i =0; i<d.length; i++)
                     {
-                        console.log('bye');
                         d[i].routename = d[i].routename.replace("%20", " ")
                         d[i].routename = d[i].routename.replace("%7D", "")
                         if(d[i].routename === gameName)
