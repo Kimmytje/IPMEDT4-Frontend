@@ -115,8 +115,9 @@ html {
 }
 
 body {
-  font-family: "Lemon";
+  font-family: 'Comfortaa';
   font-size: 1.8rem;
+  font-weight: bolder;
 
   overflow: hidden;
 
@@ -327,13 +328,14 @@ button /* Remove button style */ {
 }
 
 .button-list > h2 {
-  font-size: 4.2rem;
+  font-family: "Rock Salt";
+  font-size: 5rem;
 
   margin-bottom: 10rem;
 }
 
 a {
-  font-size: 20px;
+  font-weight: 700;
 
   margin-bottom: 8px;
 
@@ -646,6 +648,7 @@ to {
   text-shadow: 0 1px 2px var(--pink25);
 
   justify-self: center;
+  -webkit-text-fill-color: transparent;
 }
 
 .routeCard:hover .routeCard-title {
@@ -670,7 +673,7 @@ to {
   text-align: center;
   letter-spacing: 0.35rem;
 
-  color: rgb(0, 0, 0);
+  color: white;
 
   mix-blend-mode: lighten;
   justify-self: center;
@@ -793,6 +796,28 @@ to {
   border: 0;
   border-radius: 1rem;
   background: #392165;
+}
+
+/* Game.js */
+
+.dev-section {
+  margin-top: 10vh;
+}
+
+.activity-title {
+  font-size: 5rem;
+}
+
+.activity-header {
+  width: 30vw;
+  height: 25vh;
+  margin-top: 5vh;
+  margin-left: 4vw;
+  padding: 5px;
+
+  border: white solid 2px;
+  border-radius: 2rem;
+  background-color: #000;
 }
 
 /* Page not found */
@@ -966,23 +991,4 @@ to {
   ::-webkit-scrollbar {
     width: 0;
   }
-}
-
-.dev-section {
-  margin-top: 10vh;
-}
-
-.activity-title {
-  font-size: 5rem;
-}
-
-.activity-header {
-  background-color: #000;
-  width: 30vw;
-  height: 25vh;
-  margin-top: 5vh;
-  margin-left: 4vw;
-  padding: 5px;
-  border: white solid 2px;
-  border-radius: 2rem;
 }
