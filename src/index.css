@@ -142,6 +142,28 @@ body {
   text-align: center;
 }
 
+/* game.js */
+
+.dev-section {
+  margin-top: 10vh;
+}
+
+.activity-title {
+  font-size: 5rem;
+}
+
+.activity-header {
+  width: 30vw;
+  height: 25vh;
+  margin-top: 5vh;
+  margin-left: 4vw;
+  padding: 5px;
+
+  border: white solid 2px;
+  border-radius: 2rem;
+  background-color: #000;
+}
+
 /* add any page you want to scroll vertically */
 
 .play {
@@ -957,6 +979,21 @@ to {
 
 }
 
+.background {
+  position: absolute;
+  z-index: -10;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+}
+
+.blob,
+.blob-container {
+  position: absolute;
+}
+
 @media(max-width: 650px) {
   .routeCards {
     grid-template-columns: repeat(2, 1fr);
@@ -969,24 +1006,4 @@ to {
   ::-webkit-scrollbar {
     width: 0;
   }
-}
-
-.dev-section {
-  margin-top: 10vh;
-}
-
-.activity-title {
-  font-size: 5rem;
-}
-
-.activity-header {
-  width: 30vw;
-  height: 25vh;
-  margin-top: 5vh;
-  margin-left: 4vw;
-  padding: 5px;
-
-  border: white solid 2px;
-  border-radius: 2rem;
-  background-color: #000;
 }

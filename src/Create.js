@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Background from './Background';
 import ButtonList from './Buttons';
 import { StartMapClick } from './map_components/start_maps/StartMapClick';
 import StartMapLoc from './map_components/start_maps/StartMapLoc';
