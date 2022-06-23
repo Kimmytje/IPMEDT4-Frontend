@@ -909,6 +909,20 @@ to {
   background: radial-gradient(40% 40% at 50% 42%, transparent, #000 35%);
 }
 
+.game-input {
+  box-sizing: border-box;
+  width: 100%;
+  margin: 10px 0;
+  padding: 6px 10px;
+
+  border: .1rem solid var(--magenta);
+  border-radius: 1rem;
+}
+
+.game-puzzel--input h2 {
+  margin-top: 1vh;
+}
+
 .spotlight-wrapper {
   position: fixed;
   top: 0;

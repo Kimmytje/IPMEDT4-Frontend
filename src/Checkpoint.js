@@ -109,6 +109,7 @@ const CreateCommentForm = () =>
                 <input className='invis' type="text" name="latitude" value={dataFromPath[3]}/>
                 <input className='invis' type="text" name="longitude" value={dataFromPath[4]}/>
                 <input className='invis' type="text" name="activity_title" value={dataFromPath[0]}/>
+                <input className='invis' type="text" name="activity_awnser" value={"null"}/>
                 <label>Comment:</label>
                 <textarea 
                     type="text" 
@@ -142,6 +143,7 @@ const CreateActionForm = () =>
                 <input className='invis' type="text" name="latitude" value={dataFromPath[3]}/>
                 <input className='invis' type="text" name="longitude" value={dataFromPath[4]}/>
                 <input className='invis' type="text" name="activity_title" value={dataFromPath[0]}/>
+                <input className='invis' type="text" name="activity_awnser" value={"null"}/>
                 <label>opdracht:</label>
                 <textarea 
                     type="text" 
@@ -166,24 +168,32 @@ const CreatePuzzelForm = () =>
         {id: 12, borderRadius: '81% 19% 53% 47% / 16% 58% 42% 84%', background: '--magenta', height: '60vh', width: '40vw', lr: '80vw', tb: '90vh', offsetLeft: '-2.5rem', offsetTop: '-1rem'},
     ]);
     
+    let dataFromPath = DataHandler()
     return (  
         <section className='form'>
-            <form >
+            <form action="http://127.0.0.1:8000/api/create_checkpoint" method="POST" name="foto_form">
+                <input className='invis' type="text" name="routename" value={dataFromPath[1]}/>
+                <input className='invis' type="text" name="pointnumber" value={dataFromPath[2]}/>
+                <input className='invis' type="text" name="latitude" value={dataFromPath[3]}/>
+                <input className='invis' type="text" name="longitude" value={dataFromPath[4]}/>
+                <input className='invis' type="text" name="activity_title" value={dataFromPath[0]}/>
                 <label>Raadsel:</label>
                 <textarea
                     required
                     rows={4}
                     cols={50}
-                ></textarea>
+                    name="activity_header"
+                    ></textarea>
 
                 <label>Antwoord:</label>
                 <textarea
                     required
                     rows={4}
                     cols={50}
+                    name="activity_awnser"
                 ></textarea>
 
-                <button>Done</button>
+                <button type='submit'>Done</button>
             </form>
 
             <Background blobs={blobs}/>
@@ -209,6 +219,7 @@ const CreateFotoForm = () =>
                 <input className='invis' type="text" name="latitude" value={dataFromPath[3]}/>
                 <input className='invis' type="text" name="longitude" value={dataFromPath[4]}/>
                 <input className='invis' type="text" name="activity_title" value={dataFromPath[0]}/>
+                <input className='invis' type="text" name="activity_awnser" value={"null"}/>
                 <label>Geef uitleg van de foto:</label>
                 <textarea 
                     type="text" 

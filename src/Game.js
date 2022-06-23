@@ -31,8 +31,11 @@ const GetDataFromDatabase = (nName = 2, nCount = 3) =>
 
                     for(let i =0; i<d.length; i++)
                     {
+                        gameName = gameName.replace("%20", " ")
+                        gameName = gameName.replace("%7D", "")
                         d[i].routename = d[i].routename.replace("%20", " ")
                         d[i].routename = d[i].routename.replace("%7D", "")
+                        d[i].routename = d[i].routename.replace("%20", " ")
                         if(d[i].routename === gameName)
                         {
                             checkpointsArray.push(d[i])
@@ -41,8 +44,18 @@ const GetDataFromDatabase = (nName = 2, nCount = 3) =>
                     const currentData = checkpointsArray[checkpointCounter]
                     try
                     {
-                        document.getElementById("activity_title").innerHTML = currentData.activity_title
+                        document.getElementById("activity_title").innerHTML = currentData.activity_title;
                         document.getElementById("activity_header").innerHTML = currentData.activity_header;
+                        if(currentData.activity_awnser != "null")
+                        {
+                            const elements = document.querySelectorAll(".game-puzzel--input");
+                            console.log(elements)
+                            elements.forEach(element => {
+                                console.log('c')
+                                element.classList.remove("invis");
+                                element.style.display = "block"
+                            });
+                        }
                     } catch (error) {
                         // verwacht dat id's niet gevonden wordt
                         // niet echt een error dus
@@ -142,8 +155,19 @@ const GameHandler = () =>
 
 const GoToGame = () =>
 {
+    let awnserData = checkpointsArray[checkpointCounter].activity_awnser
     checkpointCounter++;
-    if(checkpointCounter < checkpointsArray.length) 
+    if(awnserData != "null")
+    {
+        console.warn(checkpointsArray[checkpointCounter])
+        const value = document.getElementById("js--game-input").value
+        if(awnserData == value)
+        {
+            if(checkpointCounter < checkpointsArray.length) window.location.href = `/game/${gameName}/${checkpointCounter}`
+            else window.location.href = "/game/end"
+        } else window.location.reload()
+    }
+    else if(checkpointCounter < checkpointsArray.length) 
         window.location.href = `/game/${gameName}/${checkpointCounter}`
     else window.location.href = "/game/end"
 }
@@ -156,6 +180,8 @@ const ActivityHandler = () =>
             <section>
                 <h1 className='activity-title' id='activity_title'></h1>
                 <p className='activity-header' id='activity_header'></p>
+                <label className='invis game-puzzel--input'><h2>Jouw antwoord:</h2></label>
+                <input className='invis game-input game-puzzel--input' type="text" id='js--game-input'></input>
                 <button className='btn-primary' onClick={GoToGame}>Finish Checkpoint</button>
             </section>
         </>
