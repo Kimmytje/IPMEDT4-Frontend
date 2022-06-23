@@ -387,7 +387,7 @@ img {
 
   overflow: hidden;
 
-  height: 10rem;
+  height: 12rem;
   margin: -20px -20px 20px -20px;
 
   transition: height 0.5s;
@@ -430,13 +430,13 @@ img {
 .activityCard .activityCard-body {
   overflow: hidden;
 
-  height: 4rem;
+  height: 6rem;
 
   transition: height 0.5s;
 }
 
 .activityCard .activityCard-body .activityCard-title {
-  font-size: 1.3em;
+  font-size: 1.4em;
   font-weight: 600;
 
   text-transform: uppercase;
@@ -449,7 +449,7 @@ img {
 }
 
 .activityCard .activityCard-body .activityCard-examples li {
-  font-size: 1.6rem;
+  font-size: 1.4rem;
 
   margin-top: 5px;
 
@@ -476,7 +476,7 @@ img {
 }
 
 .activityCard:hover .activityCard-body {
-  height: 10rem;
+  height: fit-content;
 }
 
 .activityCard:hover .activityCard-body .activityCard-examples li {
@@ -809,10 +809,9 @@ to {
 }
 
 .activity-header {
-  width: 30vw;
   height: 25vh;
+  margin: auto;
   margin-top: 5vh;
-  margin-left: 4vw;
   padding: 5px;
 
   border: white solid 2px;
