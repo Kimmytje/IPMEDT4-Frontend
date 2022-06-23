@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import {ActivityCardList} from './Cards';
 import Loading from "./Loading";
-
+import Background from "./Background";
 
 import axios from 'axios';
 
@@ -10,6 +10,13 @@ let d;
 const CheckpointSelect = () => {
     const [cards, setCards] = useState([]);
     const [isPending, setisPending] = useState([true]);
+
+    const [blobs, setBlobs] = useState([
+        {id: 9, borderRadius: '35% 65% 68% 32% / 42% 58% 42% 58%', background: '--purple', height: '40vh', width: '40vw', lr: '-20vw', tb: '70vh', offsetLeft: '2rem', offsetTop: '2rem'},
+        {id: 10, borderRadius: '82% 18% 17% 83% / 42% 58% 42% 58%', background: '--pink', height: '40vh', width: '40vw', lr: '80vw', tb: '20vh', offsetLeft: '-2.5rem', offsetTop: '0rem'},
+        {id: 11, borderRadius: '42% 58% 42% 58% / 82% 18% 17% 83%', background: '--green', height: '20vh', width: '20vw', lr: '195vw', tb: '40vh', offsetLeft: '-2.5rem', offsetTop: '-1rem'},
+        {id: 12, borderRadius: '81% 19% 53% 47% / 16% 58% 42% 84%', background: '--magenta', height: '40vh', width: '40vw', lr: '180vw', tb: '90vh', offsetLeft: '-2.5rem', offsetTop: '-1rem'},
+    ]);
 
     useEffect(() => {
         async function getAllCards() {
@@ -33,6 +40,8 @@ const CheckpointSelect = () => {
             {isPending && <Loading/>}
 
             <ActivityCardList cards={cards}/>
+
+            <Background blobs={blobs}/>
         </>
         
     );
@@ -40,6 +49,13 @@ const CheckpointSelect = () => {
 
 const CreateMultipleChoiceForm = () =>
 {
+    const [blobs, setBlobs] = useState([
+        {id: 9, borderRadius: '35% 65% 68% 32% / 42% 58% 42% 58%', background: '--purple', height: '40vh', width: '40vw', lr: '-120vw', tb: '70vh', offsetLeft: '2rem', offsetTop: '2rem'},
+        {id: 10, borderRadius: '82% 18% 17% 83% / 42% 58% 42% 58%', background: '--pink', height: '40vh', width: '40vw', lr: '-20vw', tb: '20vh', offsetLeft: '2.5rem', offsetTop: '0rem'},
+        {id: 11, borderRadius: '42% 58% 42% 58% / 82% 18% 17% 83%', background: '--green', height: '20vh', width: '20vw', lr: '95vw', tb: '20vh', offsetLeft: '-2.5rem', offsetTop: '-1rem'},
+        {id: 12, borderRadius: '81% 19% 53% 47% / 16% 58% 42% 84%', background: '--magenta', height: '40vh', width: '40vw', lr: '80vw', tb: '90vh', offsetLeft: '-2.5rem', offsetTop: '-1rem'},
+    ]);
+
     return (  
         <section className='form'>
             <form >
@@ -69,12 +85,21 @@ const CreateMultipleChoiceForm = () =>
 
                 <button>Done</button>
             </form>
+
+            <Background blobs={blobs}/>
         </section>
     );
 }
 
 const CreateCommentForm = () =>
 {
+    const [blobs, setBlobs] = useState([
+        {id: 9, borderRadius: '35% 65% 68% 32% / 42% 58% 42% 58%', background: '--purple', height: '40vh', width: '40vw', lr: '-120vw', tb: '70vh', offsetLeft: '2rem', offsetTop: '2rem'},
+        {id: 10, borderRadius: '82% 18% 17% 83% / 42% 58% 42% 58%', background: '--pink', height: '40vh', width: '40vw', lr: '-20vw', tb: '20vh', offsetLeft: '2.5rem', offsetTop: '0rem'},
+        {id: 11, borderRadius: '42% 58% 42% 58% / 82% 18% 17% 83%', background: '--green', height: '20vh', width: '20vw', lr: '95vw', tb: '20vh', offsetLeft: '-2.5rem', offsetTop: '-1rem'},
+        {id: 12, borderRadius: '81% 19% 53% 47% / 16% 58% 42% 84%', background: '--magenta', height: '60vh', width: '40vw', lr: '80vw', tb: '90vh', offsetLeft: '-2.5rem', offsetTop: '-1rem'},
+    ]);
+
     let dataFromPath = DataHandler()
     return (  
         <section className='form'>
@@ -93,12 +118,21 @@ const CreateCommentForm = () =>
                 ></textarea>
                 <button type = 'submit'>Done</button>
             </form>
+
+            <Background blobs={blobs}/>
         </section>
     );
 }
 
 const CreateActionForm = () =>
 {
+    const [blobs, setBlobs] = useState([
+        {id: 9, borderRadius: '35% 65% 68% 32% / 42% 58% 42% 58%', background: '--purple', height: '40vh', width: '40vw', lr: '-120vw', tb: '70vh', offsetLeft: '2rem', offsetTop: '2rem'},
+        {id: 10, borderRadius: '82% 18% 17% 83% / 42% 58% 42% 58%', background: '--pink', height: '40vh', width: '40vw', lr: '-20vw', tb: '20vh', offsetLeft: '2.5rem', offsetTop: '0rem'},
+        {id: 11, borderRadius: '42% 58% 42% 58% / 82% 18% 17% 83%', background: '--green', height: '20vh', width: '20vw', lr: '95vw', tb: '20vh', offsetLeft: '-2.5rem', offsetTop: '-1rem'},
+        {id: 12, borderRadius: '81% 19% 53% 47% / 16% 58% 42% 84%', background: '--magenta', height: '60vh', width: '40vw', lr: '80vw', tb: '90vh', offsetLeft: '-2.5rem', offsetTop: '-1rem'},
+    ]);
+    
     let dataFromPath = DataHandler()
     return (
             <section className='form'>
@@ -117,12 +151,21 @@ const CreateActionForm = () =>
                 ></textarea>
                 <button type='submit'>Done</button>
             </form>
+
+            <Background blobs={blobs}/>
         </section>                                                      
     );
 }
 
 const CreatePuzzelForm = () =>
 {
+    const [blobs, setBlobs] = useState([
+        {id: 9, borderRadius: '35% 65% 68% 32% / 42% 58% 42% 58%', background: '--purple', height: '40vh', width: '40vw', lr: '-120vw', tb: '70vh', offsetLeft: '2rem', offsetTop: '2rem'},
+        {id: 10, borderRadius: '82% 18% 17% 83% / 42% 58% 42% 58%', background: '--pink', height: '40vh', width: '40vw', lr: '-20vw', tb: '20vh', offsetLeft: '2.5rem', offsetTop: '0rem'},
+        {id: 11, borderRadius: '42% 58% 42% 58% / 82% 18% 17% 83%', background: '--green', height: '20vh', width: '20vw', lr: '95vw', tb: '20vh', offsetLeft: '-2.5rem', offsetTop: '-1rem'},
+        {id: 12, borderRadius: '81% 19% 53% 47% / 16% 58% 42% 84%', background: '--magenta', height: '60vh', width: '40vw', lr: '80vw', tb: '90vh', offsetLeft: '-2.5rem', offsetTop: '-1rem'},
+    ]);
+    
     return (  
         <section className='form'>
             <form >
@@ -142,12 +185,21 @@ const CreatePuzzelForm = () =>
 
                 <button>Done</button>
             </form>
+
+            <Background blobs={blobs}/>
         </section>
     );
 }
 
 const CreateFotoForm = () =>
 {
+    const [blobs, setBlobs] = useState([
+        {id: 9, borderRadius: '35% 65% 68% 32% / 42% 58% 42% 58%', background: '--purple', height: '40vh', width: '40vw', lr: '-120vw', tb: '70vh', offsetLeft: '2rem', offsetTop: '2rem'},
+        {id: 10, borderRadius: '82% 18% 17% 83% / 42% 58% 42% 58%', background: '--pink', height: '40vh', width: '40vw', lr: '-20vw', tb: '20vh', offsetLeft: '2.5rem', offsetTop: '0rem'},
+        {id: 11, borderRadius: '42% 58% 42% 58% / 82% 18% 17% 83%', background: '--green', height: '20vh', width: '20vw', lr: '95vw', tb: '20vh', offsetLeft: '-2.5rem', offsetTop: '-1rem'},
+        {id: 12, borderRadius: '81% 19% 53% 47% / 16% 58% 42% 84%', background: '--magenta', height: '60vh', width: '40vw', lr: '80vw', tb: '90vh', offsetLeft: '-2.5rem', offsetTop: '-1rem'},
+    ]);
+
     let dataFromPath = DataHandler()
     return(
         <section className='form'>
@@ -166,6 +218,8 @@ const CreateFotoForm = () =>
                 ></textarea>
                 <button type='submit'>Done</button>
             </form>
+
+            <Background blobs={blobs}/>
         </section>
     )  
 }

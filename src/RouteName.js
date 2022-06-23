@@ -10,9 +10,10 @@ const CreateRouteName = () => {
     }
 
     const [blobs, setBlobs] = useState([
-        {id: 1, borderRadius: '57% 43% 72% 28% / 51% 55% 45% 49%', background: '--green', height: '45rem', width: '45rem', lr: '-130vw', tb: '-20vh', offsetTop: '1rem', offsetLeft: '1rem'},
-        {id: 2, borderRadius: '35% 65% 13% 87% / 23% 41% 59% 77%', background: '--pink', height: '45rem', width: '55rem', lr: '-50vw', tb: '40vh', offsetTop: '1rem', offsetLeft: '-2rem'},
-        {id: 3, borderRadius: '35% 65% 42% 58% / 67% 41% 59% 33%', background: '--magenta', height: '32rem', width: '60rem', lr: '55vw', tb: '-15vh', offsetTop: '2rem', offsetLeft: '1rem'},
+        {id: 1, borderRadius: '57% 43% 72% 28% / 51% 55% 45% 49%', background: '--green', height: '45vh', width: '45vw', lr: '-130vw', tb: '-20vh', offsetTop: '1rem', offsetLeft: '1rem'},
+        {id: 2, borderRadius: '35% 65% 13% 87% / 23% 41% 59% 77%', background: '--pink', height: '45vh', width: '55vw', lr: '-40vw', tb: '40vh', offsetTop: '1rem', offsetLeft: '-2rem'},
+        {id: 3, borderRadius: '35% 65% 42% 58% / 67% 41% 59% 33%', background: '--magenta', height: '32vh', width: '40vw', lr: '80vw', tb: '-20vh', offsetTop: '2rem', offsetLeft: '1rem'},
+        {id: 5, borderRadius: '35% 65% 68% 32% / 42% 58% 42% 58%', background: '--purple', height: '40vh', width: '40vw', lr: '180vw', tb: '70vh', offsetLeft: '-2.5rem', offsetTop: '-2rem'},
     ])
 
     return (  
