@@ -69,7 +69,7 @@ function App() {
                 <CreateActionForm />
               </Route>
 
-              <Route path="/create/checkpoint/commentaar/">
+              <Route path="/create/checkpoint/comment/">
                 <Back/>
 
                 <CreateCommentForm />
