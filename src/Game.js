@@ -12,14 +12,14 @@ let checkpointCounter;
 let circle;
 let lat;
 let lng;
-let goToPlayer = true;
+let goToPlayer = false;
 
 const GetDataFromDatabase = (nName = 2, nCount = 3) =>
 {
     const path = window.location.pathname;
     gameName = path.split('/')[nName]
     checkpointCounter = path.split('/')[nCount]
-    
+    useEffect(() => {
         async function getAllCheckpointData() {
             try {
                 const checkpoints = await axios.get("http://127.0.0.1:8000/api/checkpoints") //de route van je localhost 
@@ -28,11 +28,9 @@ const GetDataFromDatabase = (nName = 2, nCount = 3) =>
                 {
                     d = checkpoints.data;
                     console.log(d);
-                    console.log("hi");
 
                     for(let i =0; i<d.length; i++)
                     {
-                        console.log('bye');
                         d[i].routename = d[i].routename.replace("%20", " ")
                         d[i].routename = d[i].routename.replace("%7D", "")
                         if(d[i].routename === gameName)
@@ -58,6 +56,7 @@ const GetDataFromDatabase = (nName = 2, nCount = 3) =>
             }
         }
         getAllCheckpointData()
+    }, [])
 }
 
 const LeafIcon = L.Icon.extend({
@@ -84,7 +83,7 @@ const GetPlayerLocation = () =>
     map = useMapEvents({
         locationfound: (location) => {
             setPosition(location.latlng)
-            let radius = location.accuracy
+            let radius = 30
 
             if(circle == null) circle = L.circle(location.latlng, radius).addTo(map);
             else circle.setLatLng(location.latlng)
@@ -93,7 +92,7 @@ const GetPlayerLocation = () =>
                 checkpointMarker = L.marker([lat, lng], {icon: summerIcon}).addTo(map);
 
             let nextLoc = new L.LatLng(lat, lng)
-            if(nextLoc.distanceTo(location.latlng) < 13) GoToActivity();
+            if(nextLoc.distanceTo(location.latlng) < 30) GoToActivity();
 
             if(goToPlayer)
             {
@@ -121,13 +120,7 @@ const GoToActivity = () =>
 
 const GameHandler = () =>
 {
-    const [isPending, setisPending] = useState(true)
-
-    useEffect(() => {
-        GetDataFromDatabase()
-        console.log();
-        setisPending(false);
-    }, [])
+    GetDataFromDatabase()
     
     return(
         <>
@@ -136,7 +129,7 @@ const GameHandler = () =>
                 <TileLayer
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 />
-                {!isPending && <GetPlayerLocation />}
+                <GetPlayerLocation />
             </MapContainer>
             <button onClick={FlyToPlayer} className='btn-primary'>Ga naar jouw positie</button>
             <section className='dev-section'>

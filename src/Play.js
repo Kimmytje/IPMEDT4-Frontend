@@ -21,21 +21,21 @@ const Play = () => {
   ])
 
     useEffect(() => {
-        async function getAllRoutes() {
-          try {
-            const routes = await axios.get("http://127.0.0.1:8000/api/routes") //de route van je localhost 
-            
-            d = routes.data;
-            setRoutes(routes.data)
-            setisPending(false);
-    
-          } catch (error) {
-            console.log(error)
-          }
+      async function getAllRoutes() {
+        try {
+          const routes = await axios.get("http://127.0.0.1:8000/api/routes") //de route van je localhost 
+          
+          d = routes.data;
+          setRoutes(routes.data)
+          setisPending(false);
+  
+        } catch (error) {
+          console.log(error)
         }
-        getAllRoutes()
-      }, [])
-      console.log(d);
+      }
+      getAllRoutes()
+    }, [])
+    console.log(d);
 
     return (  
         <>
