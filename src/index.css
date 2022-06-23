@@ -142,28 +142,6 @@ body {
   text-align: center;
 }
 
-/* game.js */
-
-.dev-section {
-  margin-top: 10vh;
-}
-
-.activity-title {
-  font-size: 5rem;
-}
-
-.activity-header {
-  width: 30vw;
-  height: 25vh;
-  margin-top: 5vh;
-  margin-left: 4vw;
-  padding: 5px;
-
-  border: white solid 2px;
-  border-radius: 2rem;
-  background-color: #000;
-}
-
 /* add any page you want to scroll vertically */
 
 .play {
